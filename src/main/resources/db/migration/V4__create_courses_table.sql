@@ -4,7 +4,7 @@ CREATE TABLE courses (
     name VARCHAR(255) NOT NULL ,
     description TEXT,
     image_url TEXT NOT NULL ,
-    rating INTEGER,
+    rating DOUBLE PRECISION,
     price DOUBLE PRECISION NOT NULL ,
     category_id INTEGER REFERENCES categories(id)
 )

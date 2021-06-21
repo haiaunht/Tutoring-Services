@@ -42,11 +42,9 @@ public class Course {
   @Column(name = "image_url")
   private String imageUrl;
 
-  @NotBlank
   @Column(name = "rating")
-  private Integer rating;
+  private Double rating;
 
-  @NotBlank
   @Column(name = "price")
   private Double price;
 
