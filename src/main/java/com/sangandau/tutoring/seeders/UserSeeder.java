@@ -11,7 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserSeeder { 
+public class UserSeeder {
   public void seed (RoleRepository roleRepository, UserRepository userRepository) {
     List<Role> roleList = (List<Role>) roleRepository.findAll();
     List<User> users = (List<User>) userRepository.findAll();
