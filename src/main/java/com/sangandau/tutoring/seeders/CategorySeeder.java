@@ -9,16 +9,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Category_Seeder implements CommandLineRunner {
-  private CategoryRepository categoryRepository;
+public class CategorySeeder {
 
-  @Autowired
-  public Category_Seeder(CategoryRepository categoryRepository) {
-    this.categoryRepository = categoryRepository;
-  }
-
-  @Override
-  public void run(String... args) throws Exception {
+  public void seed (CategoryRepository categoryRepository) {
     List<Category> categoryList = (List<Category>) categoryRepository.findAll();
 
     if (categoryList.size() == 0) {

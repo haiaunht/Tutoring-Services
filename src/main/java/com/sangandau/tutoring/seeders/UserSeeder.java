@@ -11,19 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class User_Seeder implements CommandLineRunner {
-  private UserRepository userRepository;
-  private RoleRepository roleRepository;
-
-  @Autowired
-  public User_Seeder(UserRepository userRepository,
-      RoleRepository roleRepository) {
-    this.userRepository = userRepository;
-    this.roleRepository = roleRepository;
-  }
-
-  @Override
-  public void run(String... args) throws Exception {
+public class UserSeeder { 
+  public void seed (RoleRepository roleRepository, UserRepository userRepository) {
     List<Role> roleList = (List<Role>) roleRepository.findAll();
     List<User> users = (List<User>) userRepository.findAll();
 

@@ -9,16 +9,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Role_Seeder implements CommandLineRunner {
-  private RoleRepository roleRepository;
-
-  @Autowired
-  public Role_Seeder(RoleRepository roleRepos) {
-    this.roleRepository = roleRepos;
-  }
-
-  @Override
-  public void run(String... args) throws Exception {
+public class RoleSeeder {
+  public void seed(RoleRepository roleRepository) {
     List<Role> roles = (List<Role>) roleRepository.findAll();
 
     if (roles.size() == 0) {
