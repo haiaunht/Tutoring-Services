@@ -1,1 +1,19 @@
+.categoryDiv {
+  background-color: antiquewhite;
+  border: solid black 10px;
+  width: 40%;
+  padding: 30px 30px;
+  margin: 20px;
+}
 
+
+.category-img {
+  border-radius: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+img {
+  width: 50%;
+  height: 50%;
+}

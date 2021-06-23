@@ -1,5 +1,6 @@
 package com.sangandau.tutoring.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -36,7 +37,11 @@ public class Category {
   @Column(name = "description")
   private String description;
 
+  @Column(name = "image")
+  private String image;
+
   @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+  @JsonIgnoreProperties("category")
   private List<Course> courses = new ArrayList<>();
 
 }
