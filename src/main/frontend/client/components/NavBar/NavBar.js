@@ -21,22 +21,22 @@ const NavBar = () => {
           <div className="collapse navbar-collapse" id="navmenu">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <Link href="/home" className="nav-link">
+                <Link to="/home" className="nav-link">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/course" className="nav-link">
+                <Link to="/courses" className="nav-link">
                   Courses
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/contact" className="nav-link">
+                <Link to="/contact" className="nav-link">
                   Contact
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="#" className="nav-link">
+                <Link to="/login" className="nav-link">
                   Log in
                 </Link>
               </li>
