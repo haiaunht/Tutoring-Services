@@ -20,6 +20,35 @@ img {
   height: 50%;
 }
 
+/*.courseDiv {*/
+/*  width: 50%;*/
+/*  display: block;*/
+/*  margin: auto;*/
+/*}*/
+
+.middle {
+  display: block;
+  margin: auto;
+}
+
+button {
+  padding: 15px;
+  border-radius: 8px;
+  color: mediumseagreen;
+  display: block;
+  margin: auto;
+}
+
+.notfound {
+  display: block;
+  margin: auto;
+}
+
+.notfound h2 {
+  text-align: center;
+}
+
+
 /*=============== VARIABLES CSS ===============*/
 :root {
   --hue-color: 142;

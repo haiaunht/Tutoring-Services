@@ -1,11 +1,14 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const CourseTile = props => {
   return (
-      <div  className="categoryDiv">
-        <div>
+      <div  >
+        <div className="categoryDiv">
           <div className="category-img">
-            <img src={props.image} />
+            <Link to={`/courses/${props.name}`} >
+              <img src={props.image} />
+            </Link>
           </div>
         </div>
         <div>

@@ -10,6 +10,8 @@ import Contact from "./Contact.js";
 import Login from "./Login.js";
 import AllCoursesList from "./AllCoursesList";
 import Footer from "./Footer/Footer.js";
+import CourseShow from "./CourseShow";
+import PageNotFound from "./PageNotFound";
 
 const App = (props) => {
   return (
@@ -22,9 +24,10 @@ const App = (props) => {
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/:categoryName/courses" component={CoursesList} />
         <Route exact path="/courses" component={AllCoursesList} />
+        <Route exact path="/courses/:courseName" component={CourseShow} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/404" />
+        <Route exact path="/404" component={PageNotFound}/>
       </Switch>
       <Footer />
     </BrowserRouter>
