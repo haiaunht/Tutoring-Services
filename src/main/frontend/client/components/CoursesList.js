@@ -1,49 +1,56 @@
-import React, {useEffect, useState} from "react";
-import CourseTile from "./CourseTile";
+import React, { useEffect, useState } from "react";
 
-const CoursesList = props => {
-  const [courseType, setCourseType] = useState([])
+import CourseCard from "./CourseCard/CourseCard.js";
+
+const CoursesList = (props) => {
+  const [courseType, setCourseType] = useState([]);
 
   const fetchAllCourseType = async () => {
     try {
-      const type = props.match.params.categoryName
-      console.log(type)
-      const response = await fetch(`/api/v1/${type}`)
+      const type = props.match.params.categoryName;
+      const response = await fetch(`/api/v1/${type}`);
       if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        const error = new Error(errorMessage)
-        throw error
+        const errorMessage = `${response.status} (${response.statusText})`;
+        const error = new Error(errorMessage);
+        throw error;
       }
-      const responseBody = await response.json()
-      setCourseType(responseBody)
-      console.log(responseBody)
+      const responseBody = await response.json();
+      setCourseType(responseBody);
     } catch (error) {
-      console.log(`Error in fetch: ${error.message}`)
+      console.log(`Error in fetch: ${error.message}`);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchAllCourseType()
-  }, [])
+    fetchAllCourseType();
+  }, []);
 
-  const coursesList = courseType.map(course => {
+  const coursesList = courseType.map((course) => {
     return (
-        <CourseTile
-          key={course.id}
-          id={course.id}
-          name={course.name}
-          description={course.description}
-          image={course.imageUrl}
-        />
-    )
-  })
+      <CourseCard
+        key={course.id}
+        id={course.id}
+        name={course.name}
+        description={course.description}
+        imgUrl={course.imageUrl}
+        price={course.price}
+        rating={course.rating}
+        link={`/courses/${course.name}`}
+      />
+    );
+  });
 
   return (
-      <>
-        <h1>The list for {props.match.params.categoryName}</h1>
-        {coursesList}
-      </>
-  )
-}
+    <>
+      <section className="course section container" id="course">
+        <span className="section-subtitle">
+          {props.match.params.categoryName}
+        </span>
+        <h2 className="section-title">Find the right courses for you</h2>
+        <div className="course__container grid">{coursesList}</div>
+      </section>
+    </>
+  );
+};
 
-export default CoursesList
+export default CoursesList;
