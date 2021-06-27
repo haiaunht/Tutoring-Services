@@ -24,7 +24,7 @@ public class CategorySeeder {
       Category back_end = new Category();
       back_end.setCategoryName("Back End Course");
       back_end.setDescription("Back-end languages and frameworks");
-      back_end.setImage("https://www.thebalancecareers.com/thmb/934mZp4W5j4MSCHusNcXGY0MXI8=/1500x1000/filters:fill(auto,1)/backenddeveloper-2502825a14ff440eb775dc4244e7ed4d.png");
+      back_end.setImage("https://hackr.io/blog/how-to-become-a-backend-developer/thumbnail/large");
       categoryRepository.save(back_end);
 
       Category db = new Category();
