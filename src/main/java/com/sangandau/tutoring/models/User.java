@@ -1,5 +1,6 @@
 package com.sangandau.tutoring.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -51,5 +52,6 @@ public class User {
   private Role role;
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @JsonIgnoreProperties("user")
   List<User_Course> enrolledCourses = new ArrayList<>();
 }
