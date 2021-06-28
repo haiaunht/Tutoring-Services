@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import CourseCard from "./CourseCard/CourseCard.js";
+import CourseCard from "./CourseCard/CourseCard";
+import SkeletonCourseCard from "./LoadingSkeleton/SkeletonCourseCard";
 
 const CategoryList = (props) => {
   const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getCategories = async () => {
     try {
@@ -16,27 +18,31 @@ const CategoryList = (props) => {
 
       const responseBody = await response.json();
       setCategories(responseBody);
+      setIsLoading(false);
     } catch (error) {
       console.log(`Error in fetch: ${error.message}`);
     }
   };
 
   useEffect(() => {
+    setIsLoading(true);
     getCategories();
   }, []);
 
-  const listOfCategories = categories.map((category) => {
-    return (
-      <CourseCard
-        key={category.id}
-        id={category.id}
-        name={category.categoryName}
-        description={category.description}
-        imgUrl={category.image}
-        link={`/${category.categoryName}/courses`}
-      />
-    );
-  });
+  const listOfCategories = isLoading
+    ? [1, 2, 3, 4].map((n) => <SkeletonCourseCard key={n} />)
+    : categories.map((category) => {
+        return (
+          <CourseCard
+            key={category.id}
+            id={category.id}
+            name={category.categoryName}
+            description={category.description}
+            imgUrl={category.image}
+            link={`/${category.categoryName}/courses`}
+          />
+        );
+      });
 
   return (
     <>

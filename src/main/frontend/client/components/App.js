@@ -3,13 +3,13 @@ import { hot } from "react-hot-loader/root";
 import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import "regenerator-runtime/runtime";
 
-import NavBar from "./NavBar/NavBar.js";
-import HomePage from "./HomePage.js";
-import CoursesList from "./CoursesList.js";
-import Contact from "./Contact.js";
-import Login from "./Login.js";
+import NavBar from "./NavBar/NavBar";
+import HomePage from "./HomePage";
+import CoursesList from "./CoursesList";
+import Contact from "./Contact";
+import Login from "./Login";
 import AllCoursesList from "./AllCoursesList";
-import Footer from "./Footer/Footer.js";
+import Footer from "./Footer/Footer";
 import CourseShow from "./CourseShow";
 import PageNotFound from "./PageNotFound";
 
