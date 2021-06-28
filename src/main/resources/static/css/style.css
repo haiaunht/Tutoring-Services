@@ -20,15 +20,14 @@ img {
   height: 50%;
 }
 
-/*.courseDiv {*/
-/*  width: 50%;*/
-/*  display: block;*/
-/*  margin: auto;*/
-/*}*/
+.courseDiv {
+  width: 60%;
+  display: block;
+  margin: 50px auto;
+}
 
 .middle {
-  display: block;
-  margin: auto;
+  text-align: center;
 }
 
 button {
