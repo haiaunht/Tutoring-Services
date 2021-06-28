@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Rating from "./Rating.js";
+import Rating from "./Rating";
 
 const CourseCard = (props) => {
   const {
