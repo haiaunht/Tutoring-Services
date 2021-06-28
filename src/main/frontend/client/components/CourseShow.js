@@ -17,7 +17,6 @@ const CourseShow = props => {
       }
       const responseBody = await response.json()
       setCourseDetail(responseBody)
-      console.log(responseBody)
     }
     catch (err) {
       console.log(`Error fetching course: ${courseName}`)

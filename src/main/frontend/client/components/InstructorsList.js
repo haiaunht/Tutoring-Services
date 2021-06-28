@@ -15,7 +15,6 @@ const InstructorsList = props => {
 
       const responseBody = await response.json()
       setInstructorsList(responseBody)
-      console.log(responseBody)
     } catch (err) {
       console.log(`Error in fetch all instructors: ${error.message}`);
     }

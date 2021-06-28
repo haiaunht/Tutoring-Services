@@ -13,6 +13,7 @@ import Footer from "./Footer/Footer";
 import CourseShow from "./CourseShow";
 import PageNotFound from "./PageNotFound";
 import InstructorsList from "./InstructorsList";
+import InstructorShow from "./InstructorShow";
 
 const App = (props) => {
   return (
@@ -27,7 +28,7 @@ const App = (props) => {
         <Route exact path="/courses" component={AllCoursesList} />
         <Route exact path="/courses/:courseName" component={CourseShow} />
         <Route exact path="/instructors/all" component={InstructorsList} />
-        {/*<Route exact path="/instructors/:courseId" component={InstructorsList} />*/}
+        <Route exact path="/instructors/:instructorId" component={InstructorShow} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/404" component={PageNotFound} />

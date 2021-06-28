@@ -12,7 +12,6 @@ const InstructorCard = (props) => {
     link,
   } = props;
 
-
   return (
     <>
       <Link to={link} className="card">
