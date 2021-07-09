@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=/404" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AStudy - Page not found</title>
+  <script src="https://kit.fontawesome.com/e8380b90fa.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../css/test.css" type="text/css">
+</head>
+
+<body>
+  <div class="not-found-container">
+
+    <div class="wrapper">
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell">
+      </div>
+      <div class="cell"></div>
+      <div class="line"></div>
+      <div id="info">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('app');
+    window.onmousemove = (e) => {
+      let x = e.clientX / 5,
+        y = e.clientY / 5;
+      container.style.backgroundPositionX = x + 'px';
+      container.style.backgroundPositionY = y + 'px';
+    }
+  </script>
+
+</body>
+
+</html>
