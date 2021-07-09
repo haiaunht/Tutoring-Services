@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+}
+
+.not-found-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 312px;
+  transform: preserve-3d;
+  background: hsla(0, 0%, 100%, 0.25);
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  backdrop-filter: blur(5px);
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: -20px 20px 20px rgba(0, 0, 0, 0.2), 0 0 50px rgba(0, 0, 0, 0.2);
+  perspective: 1000px;
+}
+
+.cell {
+  transform: preserve-3d;
+  perspective: 1000px;
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+  border-radius: 10px;
+  background: hsla(0, 0%, 100%, 0.25);
+  cursor: pointer;
+  text-align: center;
+  line-height: 90px;
+  font-size: 40px;
+  color: #dedede;
+  transition: 0.3s ease-in;
+  text-shadow: 0 0.5px 0 #ccc, 0 1px 0 #ccc, 0 1.5px 0 #ccc, 0 2px 0 #ccc,
+    0 2.5px 0 #ccc, 0 3px 0 transparent, 0 3.5px 0 transparent,
+    0 4px 0 transparent, 0 4.5px 0 transparent, 0 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+.cell:nth-child(1),
+.cell:nth-child(5),
+.cell:nth-child(9) {
+  background-color: #d8345f;
+  transform: translateZ();
+}
+.cell:nth-child(4),
+.cell:nth-child(6) {
+  background-color: #588da8;
+}
+
+.cell:nth-child(4),
+.cell:nth-child(5),
+.cell:nth-child(6) {
+  text-shadow: 0 0.5px 0 #ccc, 0 1px 0 #ccc, 0 1.5px 0 #ccc, 0 2px 0 #ccc,
+    0 2.5px 0 #ccc, 0 3px 0 transparent, 0 3.5px 0 transparent,
+    0 4px 0 transparent, 0 4.5px 0 transparent, 0 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+.cell:nth-child(8) a {
+  color: #588da8;
+  transition: 0.3s ease-in;
+}
+
+.cell:nth-child(8):hover {
+  color: #dedede;
+  background-color: #588da8;
+}
+
+.cell:nth-child(8):hover a {
+  color: #dedede;
+}
+
+.cell:nth-child(4) {
+  animation-delay: 0.1s;
+}
+.cell:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.cell:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  width: 304px;
+  height: 2px;
+  background-color: #cdaeac;
+  transform: rotate(45deg) translate(109px, 109px);
+  box-shadow: -1.6px 1.6px 6.6px rgba(0, 0, 0, 0.5);
+}
+
+#info {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  padding: 15px 0;
+  color: #d8345f;
+  text-shadow: -1.6px 1.6px 6.6px rgba(0, 0, 0, 0.2);
+}
