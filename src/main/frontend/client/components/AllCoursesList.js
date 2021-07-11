@@ -2,26 +2,16 @@ import React, { useState, useEffect } from "react";
 
 import CourseCard from "./CourseCard/CourseCard";
 import SkeletonCourseCard from "./LoadingSkeleton/SkeletonCourseCard";
+import Helper from "../utils/Helper";
 
 const AllCoursesList = (props) => {
   const [allCourses, setAllCourses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchAllCourse = async () => {
-    try {
-      const type = props.match.params.categoryName;
-      const response = await fetch(`/api/v1/courses`);
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`;
-        const error = new Error(errorMessage);
-        throw error;
-      }
-      const responseBody = await response.json();
-      setAllCourses(responseBody);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(`Error in fetch: ${error.message}`);
-    }
+    const data = await Helper.getData(`/api/v1/courses`);
+    setAllCourses(data);
+    setIsLoading(false);
   };
 
   useEffect(() => {
