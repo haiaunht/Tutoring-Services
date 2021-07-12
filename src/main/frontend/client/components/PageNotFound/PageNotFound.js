@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const PageNotFound = () => {
   const appContainer = document.getElementById("app");
   appContainer.style.cssText += `width: 100%;
-  perspective: 1000px;
   height:100%;
   display: flex;
   justify-content:center;

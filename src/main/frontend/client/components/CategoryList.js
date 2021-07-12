@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 
 import CourseCard from "./CourseCard/CourseCard";
 import SkeletonCourseCard from "./LoadingSkeleton/SkeletonCourseCard";
-import Helper from "../utils/Helper";
+import { getData } from "../utils/HelperFunctions";
 
 const CategoryList = (props) => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const getCategories = async () => {
-    const data = await Helper.getData(`/api/v1/categories`);
+    const data = await getData(`/api/v1/categories`);
     setCategories(data);
     setIsLoading(false);
   };
@@ -20,7 +20,7 @@ const CategoryList = (props) => {
   }, []);
 
   const listOfCategories = isLoading
-    ? [1, 2, 3, 4].map((n) => <SkeletonCourseCard key={n} />)
+    ? [...Array(4)].map((n) => <SkeletonCourseCard key={n} />)
     : categories.map((category) => {
         return (
           <CourseCard

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import InstructorCard from "./CourseCard/InstructorCard";
-import Helper from "../utils/Helper";
+import { getData } from "../utils/HelperFunctions";
 
 const InstructorsList = (props) => {
   const [instructorsList, setInstructorsList] = useState([]);
 
   const fetchAllInstructors = async () => {
-    const data = await Helper.getData(`/api/v1/instructors`);
+    const data = await getData(`/api/v1/instructors`);
     setInstructorsList(data);
   };
 

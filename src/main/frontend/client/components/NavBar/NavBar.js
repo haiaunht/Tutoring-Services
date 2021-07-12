@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Helper from "../../utils/Helper";
+import { setAppStyleToNone } from "../../utils/HelperFunctions";
 
 const NavBar = () => {
-  Helper.resetStyle();
+  setAppStyleToNone();
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
