@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -27,8 +29,8 @@ public class CourseRestApiController {
   }
 
   @GetMapping
-  public List<Course> findAll() {
-    return courseService.findAll();
+  public Page<Course> findAll(Pageable pageable) {
+    return courseService.findAll(pageable);
   }
 
   @GetMapping("/{courseName}")

@@ -3,15 +3,16 @@ import { Link, Redirect } from "react-router-dom";
 
 import InstructorShow from "./InstructorShow";
 import InstructorsList from "./InstructorsList";
-import Helper from "../utils/Helper";
+import { getData } from "../utils/HelperFunctions";
 
 const CourseShow = (props) => {
   const [courseDetail, setCourseDetail] = useState([]);
   const [courseNotFound, setCourseNotFound] = useState(null);
+  const [showInstructor, setShowInstructor] = useState(false);
 
   const getCourse = async () => {
     const courseName = props.match.params.courseName;
-    const data = await Helper.getData(`/api/v1/courses/${courseName}`);
+    const data = await getData(`/api/v1/courses/${courseName}`);
     setCourseDetail(data);
   };
 
@@ -23,16 +24,12 @@ const CourseShow = (props) => {
     return <Redirect to={"/404"} />;
   }
 
-  const [showInstructor, setShowInstructor] = useState(false);
   const showCard = (event) => {
     event.preventDefault();
-    setShowInstructor(true);
+    setShowInstructor(!showInstructor);
   };
 
-  let display = "";
-  if (showInstructor) {
-    display = <InstructorsList />;
-  }
+  let display = showInstructor ? <InstructorsList /> : "";
 
   return (
     <>
@@ -48,7 +45,6 @@ const CourseShow = (props) => {
         </div>
         <div onClick={showCard}>
           <button>Find Instructor for this course!</button>
-          {/*<button href="/instructors/all"><Link to={`/instructors/all`}>Find Instructor for this course!</Link></button>*/}
         </div>
       </div>
       <div>{display}</div>

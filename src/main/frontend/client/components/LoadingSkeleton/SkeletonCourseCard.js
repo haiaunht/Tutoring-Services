@@ -8,7 +8,6 @@ const SkeletonCourseCard = () => {
       <SkeletonElement type="card__course-image-wrapper image" />
       <div className="card__course-content">
         <SkeletonElement type="title card__course-title" />
-        <SkeletonElement type="text card__course-instructor" />
         <SkeletonElement type="text card__course-row" />
         <SkeletonElement type="price card__course-price" />
       </div>

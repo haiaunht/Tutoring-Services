@@ -79,7 +79,7 @@ button {
   --font-medium: 500;
   --font-semi-bold: 600;
 
-  /*========== Margenes Bottom ==========*/
+  /*========== Margin Bottom ==========*/
   --mb-0-25: 0.25rem;
   --mb-0-5: 0.5rem;
   --mb-0-75: 0.75rem;
@@ -98,7 +98,11 @@ button {
   --img-transition: 0.3s;
   --img-hidden: hidden;
   --img-scale: scale(1.1);
+
+  /*========== Height ==========*/
+  --pagination-height: 3.125rem;
 }
+
 /*=============== BASIC ===============*/
 * {
   box-sizing: border-box;
@@ -205,13 +209,13 @@ img {
   position: relative;
   background-color: var(--container-color);
   border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(3, 74, 40, 0.15);
+  box-shadow: 0 2px 4px hsla(var(--hue-color), 61%, 16%, 0.1);
   padding: 0.75rem;
   transition: var(--img-transition);
 }
 
 .card:hover {
-  transform: var(--img-scale);
+  box-shadow: 0 16px 24px hsla(var(--hue-color), 61%, 16%, 0.15);
 }
 
 .card__course-image-wrapper {
@@ -227,6 +231,7 @@ img {
   border-radius: 3px;
   display: block;
   transition: 0.1s linear;
+  box-shadow: 0 16px 24px hsla(var(--hue-color), 61%, 16%, 0.15);
 }
 
 .card__course-content {
@@ -311,6 +316,73 @@ img {
   display: flex;
   padding: 0.625rem 0.813rem;
   border-radius: 0.5rem 0 0.5rem 0;
+  box-shadow: 0 -2px 4px hsla(var(--hue-color), 61%, 16%, 0.15);
+}
+
+/*=============== PAGINATION ===============*/
+.pagination ul {
+  display: flex;
+  color: var(--text-color);
+  padding: 0.5rem;
+  margin: auto;
+}
+
+.pagination ul li {
+  text-align: center;
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 4px hsla(var(--hue-color), 61%, 16%, 0.1);
+}
+
+.pagination ul li.pagination__button-prev,
+.pagination ul li.pagination__button-next {
+  padding: 0 1.25rem;
+}
+
+.pagination ul li.pagination__button-prev {
+  border-radius: 1.5625rem 0.3125rem 0.3125rem 1.5625rem;
+}
+
+.pagination ul li.pagination__button-next {
+  border-radius: 0.3125rem 1.5625rem 1.5625rem 0.3125rem;
+}
+
+.pagination ul li.pagination__page-dots,
+.pagination ul li.pagination__page-number,
+.pagination ul li input {
+  border-radius: 50%;
+}
+
+.pagination ul li.pagination__page-number {
+  margin: 0 0.3125rem;
+}
+
+.pagination ul li.pagination__page-dots {
+  font-size: var(--h2-font-size);
+}
+
+.pagination ul li input {
+  outline: none;
+  border: none;
+  text-align: center;
+}
+
+.pagination ul li input[type="number"]::-webkit-inner-spin-button,
+.pagination ul li input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pagination ul li.pagination__page-number.active,
+.pagination ul li.pagination__page-dots:hover,
+.pagination ul li.pagination__page-number:hover,
+.pagination ul li.pagination__button-prev:hover,
+.pagination ul li.pagination__button-next:hover {
+  background: var(--first-color);
+  color: var(--white-color);
+  box-shadow: 0 16px 24px hsla(var(--hue-color), 61%, 16%, 0.35);
 }
 
 /*=============== FOOTER ===============*/
@@ -339,7 +411,14 @@ img {
 .footer__social {
   font-size: 1.25rem;
   color: var(--title-color);
-  margin-right: var(--mb-1-25);
+  margin-right: var(--mb-0-25);
+  box-shadow: 0 2px 4px hsla(var(--hue-color), 61%, 16%, 0.1);
+  padding: 0.75rem;
+}
+
+.footer__social:hover {
+  color: var(--text-color);
+  box-shadow: 0 16px 24px hsla(var(--hue-color), 61%, 16%, 0.15);
 }
 
 .footer__subtitle {
@@ -391,6 +470,30 @@ img {
   .course__container {
     grid-template-columns: repeat(auto-fit, minmax(220px, 0.85fr));
     justify-content: center;
+    margin-bottom: var(--mb-3);
+    margin-top: var(--mb-3);
+  }
+
+  .pagination:nth-of-type(1) {
+    display: flex;
+    margin-top: var(--mb-2);
+  }
+
+  .pagination ul li {
+    line-height: calc(var(--pagination-height) * 0.7);
+  }
+
+  .pagination ul li.pagination__page-dots,
+  .pagination ul li.pagination__page-number,
+  .pagination ul li input {
+    height: calc(var(--pagination-height) * 0.7);
+    width: calc(var(--pagination-height) * 0.7);
+  }
+
+  .pagination__page-number.mobile,
+  .pagination__button-prev-word,
+  .pagination__button-next-word {
+    display: none;
   }
 }
 
@@ -411,25 +514,35 @@ img {
   }
 
   .course__container {
-    margin-top: var(--mb-3);
-  }
-
-  .course__container {
-    margin: 0 12px;
+    margin: var(--mb-3) 12px;
     row-gap: 2rem;
     column-gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(220px, 0.35fr));
   }
-  .menu__content {
-    padding: 1.5rem;
+
+  .pagination ul li {
+    line-height: var(--pagination-height);
   }
-  .menu__img {
-    width: 130px;
+
+  .pagination ul li.pagination__page-dots,
+  .pagination ul li.pagination__page-number,
+  .pagination ul li input {
+    height: var(--pagination-height);
+    width: var(--pagination-height);
+  }
+
+  .pagination__page-number.mobile,
+  .pagination__button-prev-word,
+  .pagination__button-next-word {
+    display: inline-block;
   }
 
   .footer__rights {
     flex-direction: row;
     justify-content: space-between;
+  }
+  .footer__social {
+    margin-right: var(--mb-0-75);
   }
 }
 
@@ -440,8 +553,16 @@ img {
     margin-right: auto;
   }
 
+  .pagination:nth-of-type(1) {
+    display: none;
+  }
+
   .footer__content {
     justify-items: center;
+  }
+
+  .footer__social {
+    margin-right: var(--mb-0-5);
   }
 }
 

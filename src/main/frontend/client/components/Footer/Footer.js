@@ -11,7 +11,7 @@ const Footer = () => {
               <h3 className="footer__title">AStudy</h3>
               <p className="footer__description">
                 You choose the course,
-                <br /> we offer you the best
+                <br /> we offer the best
                 <br /> experience.
               </p>
               <div>
@@ -111,7 +111,9 @@ const Footer = () => {
           </div>
 
           <div className="footer__rights">
-            <p className="footer__copy">&#169; 2021 AStudy. All rights reserved.</p>
+            <p className="footer__copy">
+              &#169; 2021 AStudy. All rights reserved.
+            </p>
             <div className="footer__terms">
               <a href="#" className="footer__terms-link">
                 Terms & Agreements

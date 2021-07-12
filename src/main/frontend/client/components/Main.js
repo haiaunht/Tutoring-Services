@@ -22,7 +22,7 @@ const Main = (props) => {
         </Route>
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/:categoryName/courses" component={CoursesList} />
-        <Route exact path="/courses" component={AllCoursesList} />
+        <Route exact path="/courses/" component={AllCoursesList} />
         <Route exact path="/courses/:courseName" component={CourseShow} />
         <Route exact path="/instructors/all" component={InstructorsList} />
         <Route

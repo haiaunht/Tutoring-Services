@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
-import Helper from "../utils/Helper";
+import { getData } from "../utils/HelperFunctions";
 
 const InstructorShow = (props) => {
   const [instructor, setInstructor] = useState([]);
@@ -9,7 +9,7 @@ const InstructorShow = (props) => {
 
   const fetchInstructor = async () => {
     const instructorId = props.match.params.instructorId;
-    const data = await Helper.getData(`/api/v1/instructors/${instructorId}`);
+    const data = await getData(`/api/v1/instructors/${instructorId}`);
     setInstructor(data);
   };
 
