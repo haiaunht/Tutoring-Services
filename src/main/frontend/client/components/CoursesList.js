@@ -21,7 +21,7 @@ const CoursesList = (props) => {
   }, []);
 
   const coursesList = isLoading
-    ? [...Array(8)].map((n) => <SkeletonCourseCard key={n} />)
+    ? [...Array(8)].map((_, index) => <SkeletonCourseCard key={index} />)
     : courseType.map((course) => {
         return (
           <CourseCard

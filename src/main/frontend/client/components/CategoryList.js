@@ -20,7 +20,7 @@ const CategoryList = (props) => {
   }, []);
 
   const listOfCategories = isLoading
-    ? [...Array(4)].map((n) => <SkeletonCourseCard key={n} />)
+    ? [...Array(4)].map((_, index) => <SkeletonCourseCard key={index} />)
     : categories.map((category) => {
         return (
           <CourseCard

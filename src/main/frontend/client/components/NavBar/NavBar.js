@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { setAppStyleToNone } from "../../utils/HelperFunctions";
 
@@ -9,9 +9,9 @@ const NavBar = () => {
     <>
       <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
         <div className="container">
-          <Link to="/home" className="navbar-brand">
+          <NavLink to="/home" className="navbar-brand">
             <span className="text-success">AS</span>tudy
-          </Link>
+          </NavLink>
 
           <button
             className="navbar-toggler"
@@ -24,30 +24,50 @@ const NavBar = () => {
           <div className="collapse navbar-collapse" id="navmenu">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <Link to="/home" className="nav-link">
+                <NavLink
+                  to="/home"
+                  className="nav-link"
+                  activeClassName="active"
+                >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link to="/courses" className="nav-link">
+                <NavLink
+                  to="/courses"
+                  className="nav-link"
+                  activeClassName="active"
+                >
                   Courses
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link to="/contact" className="nav-link">
+                <NavLink
+                  to="/contact"
+                  className="nav-link"
+                  activeClassName="active"
+                >
                   Contact
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link to="/login" className="nav-link">
+                <NavLink
+                  to="/login"
+                  className="nav-link"
+                  activeClassName="active"
+                >
                   Sign in
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-link">/</li>
               <li className="nav-item">
-                <Link to="/signup" className="nav-link">
+                <NavLink
+                  to="/signup"
+                  className="nav-link"
+                  activeClassName="active"
+                >
                   Sign Up
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
                 <i className="fas fa-moon nav-link"></i>
