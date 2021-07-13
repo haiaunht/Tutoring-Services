@@ -14,7 +14,7 @@ public class CourseSeeder {
     List<Category> categoryList = (List<Category>) categoryRepository.findAll();
 
     if (courseList.size() == 0) {
-      for (int i = 0; i < 100; i++) {
+      for (int i = 0; i < 10; i++) {
       // ======  front-end and framework ========
 
         Course javascript = new Course();

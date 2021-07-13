@@ -11,6 +11,7 @@ import Footer from "./Footer/Footer";
 import CourseShow from "./CourseShow";
 import InstructorsList from "./InstructorsList";
 import InstructorShow from "./InstructorShow";
+import SignUp from "./SignUp";
 
 const Main = (props) => {
   return (
@@ -32,6 +33,7 @@ const Main = (props) => {
         />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
         <Redirect to="/404" />
       </Switch>
       <Footer />
