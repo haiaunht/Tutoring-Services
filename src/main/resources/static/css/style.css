@@ -204,6 +204,12 @@ img {
   background-color: var(--first-color-alt);
 }
 
+/*=============== NAVBAR ===============*/
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.active {
+  color: var(--first-color);
+}
+
 /*=============== COURSE CARDS ===============*/
 .card {
   position: relative;
