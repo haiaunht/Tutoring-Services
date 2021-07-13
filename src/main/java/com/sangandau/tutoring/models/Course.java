@@ -1,5 +1,7 @@
 package com.sangandau.tutoring.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -50,8 +52,10 @@ public class Course {
 
   @ManyToOne
   @JoinColumn(name = "category_id")
+  @JsonBackReference
   private Category category;
 
   @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+  @JsonIgnoreProperties("category")
   List<User_Course> courses_for_users = new ArrayList<>();
 }

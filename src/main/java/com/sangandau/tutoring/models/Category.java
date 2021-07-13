@@ -1,5 +1,6 @@
 package com.sangandau.tutoring.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +42,7 @@ public class Category {
   private String image;
 
   @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+  @JsonBackReference
   @JsonIgnoreProperties("category")
   private List<Course> courses = new ArrayList<>();
 

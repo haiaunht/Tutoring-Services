@@ -14,7 +14,7 @@ public class CourseSeeder {
     List<Category> categoryList = (List<Category>) categoryRepository.findAll();
 
     if (courseList.size() == 0) {
-      for (int i = 0; i < 100; i++) {
+      for (int i = 0; i < 10; i++) {
       // ======  front-end and framework ========
 
         Course javascript = new Course();
@@ -23,7 +23,7 @@ public class CourseSeeder {
             + "interpreted, object-oriented language with first-class functions, "
             + "and is best known as the scripting language for Web pages, but it's used in many non-browser environments as well.");
         javascript.setImageUrl(
-            "https://lh3.googleusercontent.com/proxy/Qwj0OkIc7pC6VTQC_7U9TOq1MDFV6mvnobDcfTZQdy_N6pP6IAxTLc8cssSduKgVXl1c7B6cJ2ANqfRulA2g_2TTifyejw2rnOHIWSN-JAQdXXMmIO1abLJHQn3oYxFM0P4xjujqj-LKaA");
+            "https://4.bp.blogspot.com/-s2EhTt57oeU/XHtQtO1QNLI/AAAAAAAANW8/KYkPQEZUyocSpA2RzqCcVt31imXPi63RACLcBGAs/s1600/Free%2BCourses%2Bto%2Blearn%2BJavaScript.jpg");
         javascript.setRating(4.7);
         javascript.setPrice(19.99);
         javascript.setCategory(categoryList.get(0));
