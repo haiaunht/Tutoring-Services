@@ -40,7 +40,7 @@ const AllCoursesList = (props) => {
   }, [currentPage]);
 
   const coursesList = isLoading
-    ? [...Array(8)].map((n) => <SkeletonCourseCard key={n} />)
+    ? [...Array(8)].map((_, index) => <SkeletonCourseCard key={index} />)
     : allCourses.map((course) => {
         return (
           <CourseCard
