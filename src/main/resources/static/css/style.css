@@ -194,14 +194,17 @@ img {
 .button {
   display: inline-block;
   background-color: var(--first-color);
-  color: #fff;
+  color: var(--body-color);
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px hsla(var(--hue-color), 61%, 16%, 0.1);
 }
 
 .button:hover {
   background-color: var(--first-color-alt);
+  color: var(--text-color-light);
+  box-shadow: 0 16px 24px hsla(var(--hue-color), 61%, 16%, 0.35);
 }
 
 /*=============== NAVBAR ===============*/
