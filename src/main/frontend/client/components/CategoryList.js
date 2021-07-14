@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import CourseCard from "./CourseCard/CourseCard";
 import SkeletonCourseCard from "./LoadingSkeleton/SkeletonCourseCard";
@@ -40,6 +41,11 @@ const CategoryList = (props) => {
         <span className="section-subtitle">Courses</span>
         <h2 className="section-title">Find the right courses for you</h2>
         <div className="course__container grid">{listOfCategories}</div>
+        <div style={{ textAlign: "center" }}>
+          <Link to={"/courses"} className="button">
+            View All Courses
+          </Link>
+        </div>
       </section>
     </>
   );
