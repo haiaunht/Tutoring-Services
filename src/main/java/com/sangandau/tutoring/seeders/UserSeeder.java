@@ -23,6 +23,8 @@ public class UserSeeder {
       sang.setLastName("Vo");
       sang.setEmail("yauacom@yahoo.com");
       sang.setPhone("425-333-4444");
+      sang.setUsername("yauacomAdmin");
+      sang.setPassword("yauacom123");
       sang.setRole(roleList.get(0));
       userRepository.save(sang);
 
@@ -31,6 +33,8 @@ public class UserSeeder {
       sang_instructor.setLastName("Vo");
       sang_instructor.setEmail("yauacom@yahoo.com");
       sang_instructor.setPhone("425-333-4444");
+      sang_instructor.setUsername("yauacomInstructor");
+      sang_instructor.setPassword("yauacom123");
       sang_instructor.setRole(roleList.get(1));
       userRepository.save(sang_instructor);
 
@@ -39,6 +43,8 @@ public class UserSeeder {
       au.setLastName("Bui");
       au.setEmail("haiaunht@yahoo.com");
       au.setPhone("425-123-4567");
+      au.setUsername("haiaunhtAdmin");
+      au.setPassword("haiau123");
       au.setRole(roleList.get(0));
       userRepository.save(au);
 
@@ -47,6 +53,8 @@ public class UserSeeder {
       au_instructor.setLastName("Bui");
       au_instructor.setEmail("haiaunht@yahoo.com");
       au_instructor.setPhone("425-123-4567");
+      au_instructor.setUsername("haiaunhtInstructor");
+      au_instructor.setPassword("haiau123");
       au_instructor.setRole(roleList.get(1));
       userRepository.save(au_instructor);
     }

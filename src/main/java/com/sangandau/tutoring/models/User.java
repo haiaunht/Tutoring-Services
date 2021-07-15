@@ -47,6 +47,14 @@ public class User {
   @Column(name="phone")
   private String phone;
 
+  @NotBlank
+  @Column(name = "username")
+  private String username;
+
+  @NotBlank
+  @Column(name = "password")
+  private String password;
+
   @ManyToOne
   @JoinColumn(name = "role_id")
   private Role role;

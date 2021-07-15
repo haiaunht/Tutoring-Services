@@ -11,6 +11,34 @@ const SignUp = props => {
             <form>
               <div className="form-group">
                 <label htmlFor="username-register" className="text-muted mb-1">
+                  <small>First name</small>
+                </label>
+                <input
+                    id="firstname-register"
+                    name="firstname"
+                    className="form-control"
+                    type="text"
+                    placeholder="Your first name"
+                    autoComplete="off"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="username-register" className="text-muted mb-1">
+                  <small>Last name</small>
+                </label>
+                <input
+                    id="lastname-register"
+                    name="lastname"
+                    className="form-control"
+                    type="text"
+                    placeholder="Your last name"
+                    autoComplete="off"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="username-register" className="text-muted mb-1">
                   <small>Username</small>
                 </label>
                 <input
