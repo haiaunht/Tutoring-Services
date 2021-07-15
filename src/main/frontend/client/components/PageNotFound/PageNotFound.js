@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import { Link } from "react-router-dom";
 
 const PageNotFound = () => {
@@ -9,7 +10,36 @@ const PageNotFound = () => {
   justify-content:center;
   align-items: center;
   background: #cdaeac url(../images/p404.png)`;
+  const handleMouseMove = (e) => {
+      let xAxis = window.innerWidth / 2 - e.pageX,
+        yAxis = window.innerHeight / 2 - e.pageY,
+        notFoundWrapper = document.querySelector(".not-found-wrapper");
 
+      appContainer.style.backgroundPositionX = xAxis + "px";
+      appContainer.style.backgroundPositionY = yAxis + "px";
+      notFoundWrapper.style.transform = `rotateY(${xAxis /
+        25}deg) rotateX(${yAxis / 25}deg)`;
+    },
+    handleMouseEnter = () => {
+      let notFoundWrapper = document.querySelector(".not-found-wrapper");
+      notFoundWrapper.style.transition = "none";
+    },
+    handleMouseLeave = () => {
+      let notFoundWrapper = document.querySelector(".not-found-wrapper");
+      notFoundWrapper.style.transition = "0.5s ease";
+      notFoundWrapper.style.transform = `rotateY(0deg) rotateX(0deg)`;
+    };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseenter", handleMouseEnter);
+    window.addEventListener("mouseleave", handleMouseLeave);
+    return function cleanupListeners() {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseenter", handleMouseEnter);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  });
   return (
     <>
       <div className="not-found-wrapper">
