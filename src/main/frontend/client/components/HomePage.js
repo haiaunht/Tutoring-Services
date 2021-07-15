@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import CategoryList from "./CategoryList";
+import Testimonial from "./Testimonial/Testimonial";
 
-const HomePage = (props) => {
+const HomePage = () => {
+  const [autoPlay, setAutoPlay] = useState(5);
+
   return (
     <>
       <CategoryList />
+      <Testimonial autoPlay={autoPlay} setAutoPlay={setAutoPlay} />
     </>
   );
 };
