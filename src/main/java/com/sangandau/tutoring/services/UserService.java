@@ -18,4 +18,12 @@ public class UserService {
   public Optional<User> findById(Integer id) {
     return userRepository.findById(id);
   }
+
+  public boolean isEmailExist(String email) {
+    return userRepository.findUserByEmail(email).isPresent();
+  }
+
+  public boolean isUsernameExist(String username) {
+    return userRepository.findUserByUsername(username).isPresent();
+  }
 }
