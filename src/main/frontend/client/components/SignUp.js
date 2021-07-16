@@ -2,21 +2,28 @@ import React, {useState, useEffect} from "react";
 
 const SignUp = props => {
   const [userRegister, setUserRegister] = useState({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     username: "",
     password: "",
-    email: ""
+    email: "",
+    phone: "",
+    roleId: 3
   })
 
-  const addNewRegistration = async () => {
+  const addNewRegistration = async (userRegister) => {
+    console.log(userRegister)
+
+    let formPayload = userRegister
+    formPayload.role = {id: 3, name: "User", description: "User"}
+    console.log(formPayload.role)
     try {
-      const response = await fetch("/api/v1/new-user", {
+      const response = await fetch("/api/v1/users/new-user", {
           method: "POST",
           headers: new Headers({
             "Content-Type": "application/json"
           }),
-          body: JSON.stringify(userRegister)
+          body: JSON.stringify(formPayload)
       })
 
       if (response.ok) {
@@ -37,6 +44,8 @@ const SignUp = props => {
 
   const handleSubmit = event => {
     event.preventDefault()
+    const newRegister = {...userRegister, role: {name: "User"}}
+    addNewRegistration(newRegister)
     console.log("here")
   }
 
@@ -49,12 +58,12 @@ const SignUp = props => {
           <div className="col-lg-5 pl-lg-5 pb-3 py-lg-5">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="firstname" className="text-muted mb-1">
+                <label htmlFor="firstName" className="text-muted mb-1">
                   <small>First name</small>
                 </label>
                 <input onChange={handleChange}
-                    id="firstname"
-                    name="firstname"
+                    id="firstName"
+                    name="firstName"
                     className="form-control"
                     type="text"
                     placeholder="Your first name"
@@ -63,12 +72,12 @@ const SignUp = props => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="lastname" className="text-muted mb-1">
+                <label htmlFor="lastName" className="text-muted mb-1">
                   <small>Last name</small>
                 </label>
                 <input onChange={handleChange}
-                    id="lastname"
-                    name="lastname"
+                    id="lastName"
+                    name="lastName"
                     className="form-control"
                     type="text"
                     placeholder="Your last name"

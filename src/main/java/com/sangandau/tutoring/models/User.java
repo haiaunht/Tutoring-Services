@@ -43,7 +43,6 @@ public class User {
   @Column(name="email")
   private String email;
 
-  @NotBlank
   @Column(name="phone")
   private String phone;
 
