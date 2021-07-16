@@ -193,7 +193,7 @@ img {
 /*========== BUTTONS ==========*/
 .button {
   display: inline-block;
-  background-color: var(--first-color);
+  background-color: var(--title-color);
   color: var(--body-color);
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
@@ -202,8 +202,8 @@ img {
 }
 
 .button:hover {
-  background-color: var(--first-color-alt);
-  color: var(--text-color-light);
+  background-color: var(--text-color);
+  color: var(--body-color);
   box-shadow: 0 16px 24px hsla(var(--hue-color), 61%, 16%, 0.35);
 }
 
@@ -376,18 +376,6 @@ img {
   font-size: var(--h2-font-size);
 }
 
-.pagination ul li input {
-  outline: none;
-  border: none;
-  text-align: center;
-}
-
-.pagination ul li input[type="number"]::-webkit-inner-spin-button,
-.pagination ul li input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 .pagination ul li.pagination__page-number.active,
 .pagination ul li.pagination__page-dots:hover,
 .pagination ul li.pagination__page-number:hover,
@@ -396,6 +384,17 @@ img {
   background: var(--first-color);
   color: var(--white-color);
   box-shadow: 0 16px 24px hsla(var(--hue-color), 61%, 16%, 0.35);
+}
+
+/*=============== TESTIMONIAL ===============*/
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) translate(0);
+  }
+  100% {
+    transform: rotate(360deg) translate(0);
+  }
 }
 
 /*=============== FOOTER ===============*/
