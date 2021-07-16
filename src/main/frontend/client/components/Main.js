@@ -5,13 +5,13 @@ import NavBar from "./NavBar/NavBar";
 import HomePage from "./HomePage";
 import CoursesList from "./CoursesList";
 import Contact from "./Contact";
-import Login from "./Login";
+import Login from "./Authentication/Login";
 import AllCoursesList from "./AllCoursesList";
 import Footer from "./Footer/Footer";
 import CourseShow from "./CourseShow";
 import InstructorsList from "./InstructorsList";
 import InstructorShow from "./InstructorShow";
-import SignUp from "./SignUp";
+import SignUp from "./Authentication/SignUp";
 
 const Main = (props) => {
   return (
