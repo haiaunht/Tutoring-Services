@@ -1,6 +1,6 @@
 import React from "react";
 
-const TestimonialDots = ({ active }) => {
+const TestimonialDots = ({ active, handleClick }) => {
   const testimonialDot = {
     height: ".8rem",
     width: active ? "2.4rem" : ".8rem",
@@ -14,7 +14,13 @@ const TestimonialDots = ({ active }) => {
     transition: "0.5s width ease",
   };
 
-  return <span className="button" style={testimonialDot}></span>;
+  return (
+    <span
+      className="button"
+      style={testimonialDot}
+      onClick={handleClick}
+    ></span>
+  );
 };
 
 export default TestimonialDots;

@@ -73,7 +73,7 @@ const Testimonial = ({ autoPlay, setAutoPlay }) => {
 
   const nextTestimonial = () => {
     setAutoPlay(null);
-    setTimeout(() => setAutoPlay(5), 5000);
+    setTimeout(() => setAutoPlay(3), 3000);
     if (currentTestimonial === testimonials.length - 1) {
       setTestimonialContentStyle({
         ...testimonialContentStyle,
@@ -93,7 +93,7 @@ const Testimonial = ({ autoPlay, setAutoPlay }) => {
 
   const prevTestimonial = () => {
     setAutoPlay(null);
-    setTimeout(() => setAutoPlay(5), 5000);
+    setTimeout(() => setAutoPlay(3), 3000);
     if (currentTestimonial === 0) {
       setTestimonialContentStyle({
         ...testimonialContentStyle,
@@ -122,9 +122,23 @@ const Testimonial = ({ autoPlay, setAutoPlay }) => {
     );
   });
 
-  const testimonialsIndicatorList = testimonials.map((_, index) => {
+  const testimonialIndicatorList = testimonials.map((testimonial, index) => {
     return (
-      <TestimonialDots key={index} active={currentTestimonial === index} />
+      <TestimonialDots
+        key={index}
+        active={currentTestimonial === index}
+        handleClick={() => {
+          setAutoPlay(null);
+          setTimeout(() => setAutoPlay(3), 3000);
+          setCurrentTestimonial(testimonial.id - 1);
+          setTestimonialContentStyle({
+            ...testimonialContentStyle,
+            translate:
+              (testimonial.id - 1) *
+              (width >= 1024 ? 1024 : width >= 968 ? 968 : width - 32),
+          });
+        }}
+      />
     );
   });
 
@@ -136,7 +150,7 @@ const Testimonial = ({ autoPlay, setAutoPlay }) => {
         <div style={testimonialWrapperStyle}>
           <div style={testimonialContentWrapperStyle}>{testimonialsList}</div>
           <div style={testimonialIndicatorWrapperStyle}>
-            {testimonialsIndicatorList}
+            {testimonialIndicatorList}
           </div>
           <div style={{ color: "var(--text-color)", padding: "var(--mb-2) 0" }}>
             <TestimonialArrow direction="left" handleClick={prevTestimonial} />
