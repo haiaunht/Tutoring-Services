@@ -3,7 +3,7 @@ import CategoryList from "./CategoryList";
 import Testimonial from "./Testimonial/Testimonial";
 
 const HomePage = () => {
-  const [autoPlay, setAutoPlay] = useState(5);
+  const [autoPlay, setAutoPlay] = useState(3);
 
   return (
     <>
