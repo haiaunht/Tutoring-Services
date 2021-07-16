@@ -31,12 +31,11 @@ public class UserRestApiController {
     String email = newUser.getEmail();
     String username = newUser.getUsername();
 
-    if (! (userService.isEmailExist(email) && userService.isUsernameExist(username)) ) {
+    if (!userService.isUsernameExist(username)) {
       return userService.save(newUser);
     }
     else {
       throw new UserAlreadyExist();
-//      return null;
     }
   }
 
@@ -47,7 +46,7 @@ public class UserRestApiController {
   private class UserAdvice {
     @ResponseBody
     @ExceptionHandler(UserRestApiController.UserAlreadyExist.class)
-    @ResponseStatus(HttpStatus.FOUND)
+    @ResponseStatus(HttpStatus.IM_USED)
     String petNotFoundHandler(UserRestApiController.UserAlreadyExist ex) {
       return "User is already register";
     }
