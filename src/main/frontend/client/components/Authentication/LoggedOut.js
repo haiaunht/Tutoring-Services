@@ -7,9 +7,7 @@ const LoggedOut = (props) => {
   const fetchUser = async () => {
     try {
       const response = await fetch(`/api/v1/users/${username}/${password}`)
-      console.log(response.data)
       if (response.ok) {
-        console.log(response.data)
         props.setLoggedIn(true)
       } else {
         console.log("Invalid username / password")
@@ -19,14 +17,14 @@ const LoggedOut = (props) => {
     }
   }
 
-  // useEffect(() => {
-  //   handleSubmit();
-  // }, [])
-
   const handleSubmit = e => {
     e.preventDefault()
     fetchUser()
   }
+
+  useEffect(() => {
+    props.getUsername(username)
+  })
 
   return (
       <form onSubmit={handleSubmit} className="mb-0 pt-2 pt-md-0">

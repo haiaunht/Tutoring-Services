@@ -7,6 +7,7 @@ import LoggedOut from "../Authentication/LoggedOut";
 
 const NavBar = () => {
   const [loggedIn, setLoggedIn] = useState()
+  const [username, setUsername] = useState("")
 
   setAppStyleToNone();
   return (
@@ -54,29 +55,7 @@ const NavBar = () => {
                   Contact
                 </NavLink>
               </li>
-              {/*<li className="nav-item">*/}
-              {/*  <NavLink*/}
-              {/*    to="/login"*/}
-              {/*    className="nav-link"*/}
-              {/*    activeClassName="active"*/}
-              {/*  >*/}
-              {/*    Sign in*/}
-              {/*  </NavLink>*/}
-              {/*</li>*/}
-              {/*<li className="nav-link">/</li>*/}
-              {/*<li className="nav-item">*/}
-              {/*  <NavLink*/}
-              {/*    to="/signup"*/}
-              {/*    className="nav-link"*/}
-              {/*    activeClassName="active"*/}
-              {/*  >*/}
-              {/*    Sign Up*/}
-              {/*  </NavLink>*/}
-              {/*</li>*/}
-              {/*<li className="nav-item">*/}
-              {/*  <i className="fas fa-moon nav-link"></i>*/}
-              {/*</li>*/}
-              {loggedIn ? <LoggedIn setLoggedIn={setLoggedIn}/> : <LoggedOut setLoggedIn={setLoggedIn}/> }
+              {loggedIn ? <LoggedIn setLoggedIn={setLoggedIn} username={username} /> : <LoggedOut setLoggedIn={setLoggedIn} getUsername={setUsername}/> }
             </ul>
           </div>
         </div>
