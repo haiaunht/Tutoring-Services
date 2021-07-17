@@ -25,7 +25,7 @@ const InstructorShow = (props) => {
     <div className="courseDiv">
       <h1 className="middle">Instructor details:</h1>
       <h3>
-        {instructor.firstName} {instructor.lastName}
+        {instructor.fullName}
       </h3>
       <h3>DO WE WANT OUR PICTURE HERE!</h3>
       <h3>Details: TO BE DISCUSSED IF WE WANT BIO HERE!</h3>

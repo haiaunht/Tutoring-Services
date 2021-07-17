@@ -19,8 +19,7 @@ public class UserSeeder {
     if (users.size() == 0) {
 
       User sang = new User();
-      sang.setFirstName("Sang");
-      sang.setLastName("Vo");
+      sang.setFullName("Sang Vo");
       sang.setEmail("yauacom@yahoo.com");
       sang.setPhone("425-333-4444");
       sang.setUsername("yauacomAdmin");
@@ -29,8 +28,7 @@ public class UserSeeder {
       userRepository.save(sang);
 
       User sang_instructor = new User();
-      sang_instructor.setFirstName("Sang");
-      sang_instructor.setLastName("Vo");
+      sang_instructor.setFullName("Sang Vo");
       sang_instructor.setEmail("yauacom@yahoo.com");
       sang_instructor.setPhone("425-333-4444");
       sang_instructor.setUsername("yauacomInstructor");
@@ -39,8 +37,7 @@ public class UserSeeder {
       userRepository.save(sang_instructor);
 
       User au = new User();
-      au.setFirstName("Hai-Au");
-      au.setLastName("Bui");
+      au.setFullName("Hai-Au Bui");
       au.setEmail("haiaunht@yahoo.com");
       au.setPhone("425-123-4567");
       au.setUsername("haiaunhtAdmin");
@@ -49,8 +46,7 @@ public class UserSeeder {
       userRepository.save(au);
 
       User au_instructor = new User();
-      au_instructor.setFirstName("Hai-Au");
-      au_instructor.setLastName("Bui");
+      au_instructor.setFullName("Hai-Au Bui");
       au_instructor.setEmail("haiaunht@yahoo.com");
       au_instructor.setPhone("425-123-4567");
       au_instructor.setUsername("haiaunhtInstructor");

@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 const InstructorCard = (props) => {
   const {
     id,
-    firstName,
-    lastName,
+    fullName,
     email,
     phone,
     role,
@@ -16,7 +15,7 @@ const InstructorCard = (props) => {
     <>
       <Link to={link} className="card">
         <div className="card__course-content">
-          <h3 className="card__course-title">{firstName} {lastName}</h3>
+          <h3 className="card__course-title">{fullName}</h3>
           <div className="card__course-description">{email}</div>
           <div className="card__course-instructor">{phone}</div>
           <div className="card__course-row">More detail</div>

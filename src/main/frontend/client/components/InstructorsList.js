@@ -19,8 +19,7 @@ const InstructorsList = (props) => {
       <InstructorCard
         key={each.id}
         id={each.id}
-        firstName={each.firstName}
-        lastName={each.lastName}
+        fullName={each.fullName}
         email={each.email}
         phone={each.phone}
         role={each.role.name}

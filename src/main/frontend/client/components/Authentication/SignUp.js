@@ -4,8 +4,7 @@ import Error from "../Error";
 
 const SignUp = props => {
   const [userRegister, setUserRegister] = useState({
-    firstName: "",
-    lastName: "",
+    fullName: "",
     username: "",
     password: "",
     email: "",
@@ -16,8 +15,6 @@ const SignUp = props => {
   const [errors, setErrors] = useState("")
 
   const addNewRegistration = async (userRegister) => {
-    console.log(userRegister)
-
     let formPayload = userRegister
     formPayload.role = {id: 3, name: "User", description: "User"}
     console.log(formPayload.role)
@@ -65,31 +62,17 @@ const SignUp = props => {
             <Error errors={errors} />
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="firstName" className="text-muted mb-1">
-                  <small>First name</small>
+                <label htmlFor="fullName" className="text-muted mb-1">
+                  <small>Full name</small>
                 </label>
                 <input onChange={handleChange}
-                    id="firstName"
-                    name="firstName"
+                    id="fullName"
+                    name="fullName"
                     className="form-control"
                     type="text"
-                    placeholder="Your first name"
+                    placeholder="Full name here"
                     autoComplete="off"
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="lastName" className="text-muted mb-1">
-                  <small>Last name</small>
-                </label>
-                <input onChange={handleChange}
-                    id="lastName"
-                    name="lastName"
-                    className="form-control"
-                    type="text"
-                    placeholder="Your last name"
-                    autoComplete="off"
-                />
+              />
               </div>
 
               <div className="form-group">
