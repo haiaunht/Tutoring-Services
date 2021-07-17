@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { setAppStyleToNone } from "../../utils/HelperFunctions";
 import LoggedIn from "../Authentication/LoggedIn";
 import LoggedOut from "../Authentication/LoggedOut";
+import SignUp from "../Authentication/SignUp";
 
 const NavBar = () => {
   const [loggedIn, setLoggedIn] = useState()
@@ -55,7 +56,18 @@ const NavBar = () => {
                   Contact
                 </NavLink>
               </li>
-              {loggedIn ? <LoggedIn setLoggedIn={setLoggedIn} username={username} /> : <LoggedOut setLoggedIn={setLoggedIn} getUsername={setUsername}/> }
+              <li className="nav-item">
+                {loggedIn ? <LoggedIn setLoggedIn={setLoggedIn} username={username} /> : <LoggedOut setLoggedIn={setLoggedIn} setUsername={setUsername}/> }
+              </li>
+              <li>
+                <NavLink
+                    to="/signup"
+                    className="nav-link"
+                    activeClassName="active"
+                >
+                  Sign Up
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>

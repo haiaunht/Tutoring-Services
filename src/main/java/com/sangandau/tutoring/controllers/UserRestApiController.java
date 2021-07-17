@@ -42,7 +42,6 @@ public class UserRestApiController {
 
   @GetMapping("/{username}/{password}")
   public User match(@PathVariable String username, @PathVariable String password) {
-//    return userService.isUsernameExist(username) && userService.isPasswordExist(password);
     return userService.findByUsernameAndPassword(username, password).orElseThrow(() -> new UserNotFound() );
   }
 
