@@ -17,7 +17,6 @@ const SignUp = props => {
   const addNewRegistration = async (userRegister) => {
     let formPayload = userRegister
     formPayload.role = {id: 3, name: "User", description: "User"}
-    console.log(formPayload.role)
     try {
       const response = await fetch("/api/v1/users/new-user", {
           method: "POST",

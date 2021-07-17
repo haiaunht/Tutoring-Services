@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"
+import SignUp from "./SignUp";
 
 const LoggedOut = (props) => {
   const [username, setUsername] = useState()
@@ -7,11 +8,16 @@ const LoggedOut = (props) => {
   const fetchUser = async () => {
     try {
       const response = await fetch(`/api/v1/users/${username}/${password}`)
+
       if (response.ok) {
         props.setLoggedIn(true)
       } else {
         console.log("Invalid username / password")
       }
+
+      const body = await response.json()
+      console.log(body)
+      props.setUsername(body.fullName)
     } catch (err) {
       console.log("There was a problem")
     }
@@ -22,12 +28,10 @@ const LoggedOut = (props) => {
     fetchUser()
   }
 
-  useEffect(() => {
-    props.getUsername(username)
-  })
-
   return (
-      <form onSubmit={handleSubmit} className="mb-0 pt-2 pt-md-0">
+      <>
+      <form onSubmit={handleSubmit}  className="nav-link"
+            activeClassName="active">
         <div className="row align-items-center">
           <div className="col-md mr-0 pr-md-0 mb-3 mb-md-0">
             <input onChange={e => setUsername(e.target.value)}
@@ -51,6 +55,7 @@ const LoggedOut = (props) => {
           </div>
         </div>
       </form>
+      </>
   )
 }
 
