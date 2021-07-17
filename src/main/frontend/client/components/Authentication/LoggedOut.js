@@ -17,7 +17,10 @@ const LoggedOut = (props) => {
 
       const body = await response.json()
       console.log(body)
-      props.setUsername(body.fullName)
+      props.setUserinfo(body.fullName)
+      localStorage.setItem("info", body.fullName)
+      localStorage.setItem("username", body.username)
+
     } catch (err) {
       console.log("There was a problem")
     }
@@ -30,8 +33,7 @@ const LoggedOut = (props) => {
 
   return (
       <>
-      <form onSubmit={handleSubmit}  className="nav-link"
-            activeClassName="active">
+      <form onSubmit={handleSubmit}  className="nav-link">
         <div className="row align-items-center">
           <div className="col-md mr-0 pr-md-0 mb-3 mb-md-0">
             <input onChange={e => setUsername(e.target.value)}
