@@ -56,8 +56,18 @@ const NavBar = () => {
                   Contact
                 </NavLink>
               </li>
-              {loggedIn ? <LoggedIn setLoggedIn={setLoggedIn} username={username} /> : <LoggedOut setLoggedIn={setLoggedIn} setUsername={setUsername}/> }
-              
+              <li className="nav-item">
+                {loggedIn ? <LoggedIn setLoggedIn={setLoggedIn} username={username} /> : <LoggedOut setLoggedIn={setLoggedIn} setUsername={setUsername}/> }
+              </li>
+              <li>
+                <NavLink
+                    to="/signup"
+                    className="nav-link"
+                    activeClassName="active"
+                >
+                  Sign Up
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>
