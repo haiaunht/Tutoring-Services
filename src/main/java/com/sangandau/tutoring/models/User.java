@@ -32,12 +32,8 @@ public class User {
   private Integer id;
 
   @NotBlank
-  @Column(name="first_name")
-  private String firstName;
-
-  @NotBlank
-  @Column(name="last_name")
-  private String lastName;
+  @Column(name="full_name")
+  private String fullName;
 
   @NotBlank
   @Column(name="email")
