@@ -1,16 +1,25 @@
 import React, {useState} from "react";
-import { NavLink } from "react-router-dom";
+import {
+  NavLink,
+} from "react-router-dom";
 
 import { setAppStyleToNone } from "../../utils/HelperFunctions";
 import LoggedIn from "../Authentication/LoggedIn";
 import LoggedOut from "../Authentication/LoggedOut";
-import SignUp from "../Authentication/SignUp";
+
 
 const NavBar = () => {
-  const [loggedIn, setLoggedIn] = useState()
-  const [username, setUsername] = useState("")
+  const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("info")))
+  const [userInfo, setUserinfo] = useState("")
 
   setAppStyleToNone();
+  //
+  // if (loggedIn) {
+  //   return (
+  //       <Redirect to="/home" /> //????? need the navbar on top
+  //   );
+  // }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -57,7 +66,7 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                {loggedIn ? <LoggedIn setLoggedIn={setLoggedIn} username={username} /> : <LoggedOut setLoggedIn={setLoggedIn} setUsername={setUsername}/> }
+                {loggedIn ? <LoggedIn setLoggedIn={setLoggedIn} userInfo={userInfo} /> : <LoggedOut setLoggedIn={setLoggedIn} setUserinfo={setUserinfo}/> }
               </li>
               <li>
                 <NavLink
