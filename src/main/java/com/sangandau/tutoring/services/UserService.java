@@ -31,6 +31,14 @@ public class UserService {
     return userRepository.findUserByUsername(username).isPresent();
   }
 
+  public boolean isPasswordExist(String password) {
+    return userRepository.findUserByPassword(password).isPresent();
+  }
+
+  public Optional<User> findByUsernameAndPassword(String username, String password) {
+    return userRepository.findByUsernameAndPassword(username, password);
+  }
+
   public User save(User newRegister) {
     Role role;
     Optional<Role> userRole = roleRepos.findAllByName(newRegister.getRole().getName());
