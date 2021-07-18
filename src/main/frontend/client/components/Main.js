@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 
 import NavBar from "./NavBar/NavBar";
@@ -12,14 +12,18 @@ import CourseShow from "./CourseShow";
 import InstructorsList from "./InstructorsList";
 import InstructorShow from "./InstructorShow";
 import SignUp from "./Authentication/SignUp";
+import CustomerPage from "./CustomerPage";
 
-const Main = (props) => {
+const Main = () => {
+  const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("info")))
+
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       <Switch>
         <Route exact path="/">
-          <Redirect to="/home" />
+          {/*<Redirect to="/home" />*/}
+          {loggedIn ? <CustomerPage /> : <HomePage />}
         </Route>
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/:categoryName/courses" component={CoursesList} />
