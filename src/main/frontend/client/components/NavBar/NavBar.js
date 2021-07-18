@@ -7,8 +7,8 @@ import { setAppStyleToNone } from "../../utils/HelperFunctions";
 import LoggedIn from "../Authentication/LoggedIn";
 import LoggedOut from "../Authentication/LoggedOut";
 
-const NavBar = () => {
-  const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("info")))
+const NavBar = (props) => {
+  // const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("info")))
   const [userInfo, setUserinfo] = useState("")
 
   setAppStyleToNone();
@@ -65,13 +65,12 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                {loggedIn ? <LoggedIn setLoggedIn={setLoggedIn} userInfo={userInfo} /> : <LoggedOut setLoggedIn={setLoggedIn} setUserinfo={setUserinfo}/> }
+                {props.loggedIn ? <LoggedIn setLoggedIn={props.setLoggedIn} userInfo={userInfo} /> : <LoggedOut setLoggedIn={props.setLoggedIn} setUserinfo={setUserinfo}/> }
               </li>
               <li>
-                {!loggedIn ? <NavLink
+                {!props.loggedIn ? <NavLink
                     to="/signup"
                     className="nav-link"
-                    activeClassName="active"
                 >
                   Sign Up
                 </NavLink> : null}
