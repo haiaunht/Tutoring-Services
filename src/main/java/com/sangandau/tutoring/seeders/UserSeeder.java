@@ -1,20 +1,23 @@
 package com.sangandau.tutoring.seeders;
 
+import com.sangandau.tutoring.models.Course;
 import com.sangandau.tutoring.models.Role;
 import com.sangandau.tutoring.models.User;
+import com.sangandau.tutoring.repositories.CourseRepository;
 import com.sangandau.tutoring.repositories.RoleRepository;
 import com.sangandau.tutoring.repositories.UserRepository;
+import java.util.HashSet;
 import java.util.List;
-import javax.persistence.Access;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
+import java.util.Optional;
+import java.util.Set;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserSeeder {
-  public void seed (RoleRepository roleRepository, UserRepository userRepository) {
+  public void seed (RoleRepository roleRepository, UserRepository userRepository, CourseRepository courseRepository) {
     List<Role> roleList = (List<Role>) roleRepository.findAll();
     List<User> users = (List<User>) userRepository.findAll();
+    List<Course> courses = (List<Course>) courseRepository.findAll();
 
     if (users.size() == 0) {
 
@@ -53,6 +56,16 @@ public class UserSeeder {
       au_instructor.setPassword("haiau123");
       au_instructor.setRole(roleList.get(1));
       userRepository.save(au_instructor);
+
+      User kim = new User();
+      kim.setFullName("Kim Le");
+      kim.setEmail("kim@yahoo.com");
+      kim.setPhone("425-123-0000");
+      kim.setUsername("kimle");
+      kim.setPassword("kim123");
+      kim.setRole(roleList.get(2));
+      userRepository.save(kim);
+
     }
   }
 }
