@@ -5,6 +5,7 @@ const LoggedIn = (props) => {
   const handleLogout = (e) => {
     e.preventDefault()
     props.setLoggedIn(false)
+    localStorage.removeItem("useId")
     localStorage.removeItem("info")
     localStorage.removeItem("username")
   }

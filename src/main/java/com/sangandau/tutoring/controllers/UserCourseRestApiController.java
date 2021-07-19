@@ -1,9 +1,9 @@
 package com.sangandau.tutoring.controllers;
 
 import com.sangandau.tutoring.models.Course;
-import com.sangandau.tutoring.models.User_Course;
-import com.sangandau.tutoring.services.UserCourseService;
 import com.sangandau.tutoring.services.UserService;
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,8 @@ public class UserCourseRestApiController {
   }
 
   @GetMapping("/{userId}")
-  public Set<Course> findAll(@PathVariable Integer userId) {
-    return service.findCourseOfUser(userId);
+  public List<Course> findAll(@PathVariable Integer userId) {
+    Set<Course> result = service.findCourseOfUser(userId);
+    return new ArrayList<>(result);
   }
 }

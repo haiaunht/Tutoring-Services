@@ -16,8 +16,9 @@ const LoggedOut = (props) => {
       }
 
       const body = await response.json()
-      console.log(body)
+      console.log(body.id)
       props.setUserinfo(body.fullName)
+      localStorage.setItem("userId", body.id)
       localStorage.setItem("info", body.fullName)
       localStorage.setItem("username", body.username)
 

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 
 import NavBar from "./NavBar/NavBar";
@@ -16,6 +16,7 @@ import CustomerPage from "./CustomerPage";
 
 const Main = () => {
   const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("info")))
+  const [userWithId, setUserWithId] = useState(localStorage.getItem("userId"))
 
   return (
     <BrowserRouter>
@@ -23,7 +24,7 @@ const Main = () => {
       <Switch>
         <Route exact path="/">
           {/*<Redirect to="/home" />*/}
-          {loggedIn ? <CustomerPage /> : <HomePage />}
+          {loggedIn ? <CustomerPage userWithId={userWithId}/> : <HomePage />}
         </Route>
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/:categoryName/courses" component={CoursesList} />
