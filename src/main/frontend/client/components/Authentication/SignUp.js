@@ -13,6 +13,7 @@ const SignUp = props => {
   })
 
   const [errors, setErrors] = useState("")
+  const [success, setSuccess] = useState(null)
 
   const addNewRegistration = async (userRegister) => {
     let formPayload = userRegister
@@ -28,6 +29,7 @@ const SignUp = props => {
 
       if (response.ok) {
         console.log("New user added successfully!")
+        setSuccess("Thank you for register with us!")
       } else {
         setErrors("Username or email are already existed")
       }
@@ -59,6 +61,7 @@ const SignUp = props => {
           </div>
           <div className="col-lg-5 pl-lg-5 pb-3 py-lg-5">
             <Error errors={errors} />
+            <h2>{success}</h2>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="fullName" className="text-muted mb-1">

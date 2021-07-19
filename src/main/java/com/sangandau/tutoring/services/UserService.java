@@ -1,10 +1,14 @@
 package com.sangandau.tutoring.services;
 
+import com.sangandau.tutoring.models.Course;
 import com.sangandau.tutoring.models.Role;
 import com.sangandau.tutoring.models.User;
 import com.sangandau.tutoring.repositories.RoleRepository;
 import com.sangandau.tutoring.repositories.UserRepository;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +25,13 @@ public class UserService {
 
   public Optional<User> findById(Integer id) {
     return userRepository.findById(id);
+  }
+
+  public Set<Course> findCourseOfUser(Integer id) {
+    Optional<User> foundUser = userRepository.findById(id);
+    Set<Course> courses = (Set<Course>) foundUser.get().getCourses();
+
+    return courses;
   }
 
   public boolean isEmailExist(String email) {

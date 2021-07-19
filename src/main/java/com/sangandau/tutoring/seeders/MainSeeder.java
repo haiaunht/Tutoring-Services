@@ -26,12 +26,15 @@ public class MainSeeder implements CommandLineRunner {
   @Autowired private TestimonialRepository testimonialRepository;
   @Autowired private TestimonialSeeder testimonialSeeder;
 
+  @Autowired private UserCourseSeeder userCourseSeeder;
+
   @Override
   public void run(String... args) throws Exception {
     roleSeeder.seed(roleRepository);
-    userSeeder.seed(roleRepository, userRepository);
     categorySeeder.seed(categoryRepository);
     courseSeeder.seed(categoryRepository, courseRepository);
+    userSeeder.seed(roleRepository, userRepository, courseRepository);
     testimonialSeeder.seed(testimonialRepository);
+//    userCourseSeeder.seed(userRepository, courseRepository);
   }
 }
