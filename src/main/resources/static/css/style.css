@@ -397,6 +397,23 @@ img {
   }
 }
 
+/*=============== SPONSORS ===============*/
+.sponsor__container {
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  justify-items: center;
+  row-gap: 3.5rem;
+}
+
+.sponsor__content:hover .sponsor__img {
+  filter: invert(0.5);
+}
+
+.sponsor__img {
+  width: 90px;
+  filter: invert(0.7);
+  transition: var(--img-transition);
+}
+
 /*=============== FOOTER ===============*/
 .footer__container {
   row-gap: 5rem;
