@@ -143,6 +143,15 @@ img {
   height: auto;
 }
 
+input::placeholder {
+  color: var(--text-color);
+}
+
+input:focus {
+  border: none;
+  outline: none;
+}
+
 @media screen and (min-width: 968px) {
   :root {
     --biggest-font-size: 4rem;
@@ -397,6 +406,68 @@ img {
   }
 }
 
+/*=============== SUBSCRIBE ===============*/
+.subscribe__bg {
+  background-color: var(--first-color-second);
+  padding: 2.5rem 0;
+}
+
+.subscribe__container {
+  border-radius: var(--mb-0-5);
+}
+
+.subscribe__title,
+.subscribe__description {
+  color: var(--white-color);
+  text-align: center;
+  margin-bottom: var(--mb-2-5);
+}
+
+.subscribe__form {
+  background-color: var(--input-color);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  border-radius: var(--mb-0-5);
+}
+
+.subscribe__input {
+  width: 70%;
+  padding-right: 0.5rem;
+  background-color: var(--input-color);
+  color: var(--text-color);
+  border: none;
+}
+
+.subscribe__input::placeholder {
+  color: var(--text-color);
+}
+
+.subscribe__button {
+  background: var(--first-color);
+  color: var(--body-color);
+  border-radius: var(--mb-0-5);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0px 10px 10px hsla(var(--hue-color), 0%, 0%, 0.4);
+}
+
+.subscribe__button-disabled {
+  box-shadow: inset -2px -2px 8px hsla(var(--hue-color), 8%, 60%, 0),
+    inset -2px -2px 12px hsla(var(--hue-color), 8%, 60%, 0.5),
+    inset 2px 2px 4px hsla(var(--hue-color), 8%, 60%, 0.9),
+    inset 2px 2px 8px hsla(var(--hue-color), 8%, 0%, 0.15);
+  transition: all 0.5s ease;
+  background: var(--input-color);
+  color: var(--text-color);
+  border: 1px solid hsla(var(--hue-color), 24%, 35%, 0.1);
+  cursor: none;
+  pointer-events: none;
+}
+
 /*=============== SPONSORS ===============*/
 .sponsor__container {
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
@@ -531,6 +602,11 @@ img {
   .course__container {
     grid-template-columns: repeat(auto-fit, minmax(220px, 0.5fr));
   }
+
+  .subscribe__form {
+    width: 470px;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -564,6 +640,18 @@ img {
   .pagination__button-prev-word,
   .pagination__button-next-word {
     display: inline-block;
+  }
+
+  .subscribe__bg {
+    background: none;
+    padding: 0;
+  }
+  .subscribe__container {
+    background-color: var(--first-color-second);
+    padding: 3.5rem 0;
+  }
+  .subscribe__input {
+    padding: 0 0.5rem;
   }
 
   .footer__rights {
