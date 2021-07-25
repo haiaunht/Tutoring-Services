@@ -456,6 +456,8 @@ input:focus {
 }
 
 .subscribe__button-disabled {
+  border-radius: var(--mb-0-5);
+  padding: 0.75rem 1rem;
   box-shadow: inset -2px -2px 8px hsla(var(--hue-color), 8%, 60%, 0),
     inset -2px -2px 12px hsla(var(--hue-color), 8%, 60%, 0.5),
     inset 2px 2px 4px hsla(var(--hue-color), 8%, 60%, 0.9),

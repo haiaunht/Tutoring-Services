@@ -56,7 +56,7 @@ public class UserRestApiController {
     @ResponseBody
     @ExceptionHandler(UserRestApiController.UserAlreadyExist.class)
     @ResponseStatus(HttpStatus.IM_USED)
-    String petNotFoundHandler(UserRestApiController.UserAlreadyExist ex) {
+    String userNotFoundHandler(UserRestApiController.UserAlreadyExist ex) {
       return "User is already register";
     }
   }
