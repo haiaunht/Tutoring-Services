@@ -19,6 +19,7 @@ export const getData = async (url) => {
 };
 
 export const postData = async (url, formPayload) => {
+  let error;
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -27,21 +28,20 @@ export const postData = async (url, formPayload) => {
       },
       body: JSON.stringify(formPayload),
     });
-    if (!response.ok) {
-      if (response.status === 422) {
-        return await response.json();
-      } else {
-        throw new Error(response.status);
-      }
+    if (response.ok || response.status === 422) {
+      return await response.json();
+    } else {
+      error = await response.json();
+      const message = error.message;
+      throw new Error(message);
     }
   } catch (error) {
     console.error(`Error in fetch: ${error.message}`);
   }
-  return {};
+  return error;
 };
 
 export const isEmailValid = (email) => {
   const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  console.log(regex.test(email));
   return regex.test(email);
 };

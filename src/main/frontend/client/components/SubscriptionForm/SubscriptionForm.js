@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { isEmailValid } from "../../utils/HelperFunctions";
 
 const SubscriptionForm = (props) => {
   const { email, handleOnChangeEmail, handleSubmitEmail } = props;
+  const [buttonClassName, setButtonClassName] = useState("");
+
+  useEffect(() => {
+    isEmailValid(email.email)
+      ? setButtonClassName("button subscribe__button")
+      : setButtonClassName("subscribe__button-disabled");
+  }, [email]);
+
   return (
     <section className="subscribe section">
       <div className="subscribe__bg">
@@ -14,7 +22,12 @@ const SubscriptionForm = (props) => {
             Subscribe to our newsletter and get a special 30% discount.
           </p>
 
-          <form action="" className="subscribe__form" method="post">
+          <form
+            autoComplete="off"
+            className="subscribe__form"
+            method="post"
+            onSubmit={handleSubmitEmail}
+          >
             <input
               name="email"
               value={email.email}
@@ -24,16 +37,11 @@ const SubscriptionForm = (props) => {
               className="subscribe__input"
             />
 
-            <button
-              className={
-                isEmailValid(email.email)
-                  ? "button subscribe__button"
-                  : "subscribe__button-disabled"
-              }
-              onClick={handleSubmitEmail}
-            >
-              Subscribe
-            </button>
+            <input
+              type="submit"
+              className={buttonClassName}
+              value="Subscribe"
+            />
           </form>
         </div>
       </div>

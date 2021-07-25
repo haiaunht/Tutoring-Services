@@ -9,24 +9,22 @@ import { postData } from "../utils/HelperFunctions";
 const HomePage = () => {
   const [autoPlay, setAutoPlay] = useState(3);
   const [email, setEmail] = useState({ email: "" });
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState({});
 
   const handleOnChangeEmail = (e) => {
     const { name, value } = e.currentTarget;
     e.preventDefault();
-    console.log(e.currentTarget);
     setEmail({ [name]: value });
-    console.log(email);
   };
 
   const handleSubmitEmail = async (e) => {
     e.preventDefault();
-    const response = await postData("api/v1/subscription", email);
-    if (_.isEmpty(response)) {
+    const response = await postData("/api/v1/subscription", email);
+    setMessage(response);
+    if (response.message === "Successfully subscribed!") {
       setEmail({ email: "" });
       // TODO: sendAlert("success");
     } else {
-      setError(response);
       // TODO: sendAlert("error");
     }
   };
