@@ -226,6 +226,215 @@ input:focus {
   padding: 10px;
 }
 
+/*=============== NOTIFICATION ===============*/
+.notification__container {
+  font-size: 14px;
+  position: fixed;
+  z-index: var(--z-fixed);
+}
+
+.notification__container--top-right {
+  top: 80px;
+  right: 10px;
+  animation: slide-in-right 0.4s ease, fade-out linear 1s 3s forwards;
+}
+
+.notification__container--top-left {
+  top: 80px;
+  left: 10px;
+  animation: slide-in-left 0.4s ease, fade-out linear 1s 3s forwards;
+}
+
+.notification__container--bottom-right {
+  bottom: 12px;
+  right: 10px;
+  animation: slide-in-right 0.4s ease, fade-out linear 1s 3s forwards;
+}
+
+.notification__container--bottom-left {
+  bottom: 12px;
+  left: 10px;
+  animation: slide-in-left 0.4s ease, fade-out linear 1s 3s forwards;
+}
+
+.notification__content {
+  transition: 0.3s ease;
+  pointer-events: auto;
+  margin: 0 0 6px;
+  padding: 10px 20px 20px;
+  margin-bottom: 15px;
+  max-width: 350px;
+  max-height: 100px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px hsl(0, 0%, 60%);
+  color: var(--body-color);
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--mb-1);
+}
+
+.notification__content:hover {
+  box-shadow: 0 0 12px #fff;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.notification__content:hover ~ div {
+  opacity: 1;
+}
+
+.notification__circles {
+  opacity: 0.9;
+}
+
+.notification:hover .notification__circles {
+  opacity: 1;
+}
+
+.notification__circle-1 {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  position: absolute;
+  top: 68px;
+  left: -15px;
+}
+.notification__circle-2 {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  position: absolute;
+  top: 30px;
+  left: 15px;
+}
+.notification__circle-3 {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  position: absolute;
+  top: 38px;
+  left: 23px;
+}
+.notification__circle-4 {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  top: 42px;
+  left: 42px;
+}
+.notification__circle-5 {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+  left: 5px;
+}
+.notification__circle-6 {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: 68px;
+  left: 33px;
+}
+
+.notification__body {
+  width: 75%;
+  margin: 0 120px 0 170px;
+}
+
+.notification__title {
+  font-family: var(--title-font);
+  font-size: var(--h3-font-size);
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 300px;
+  height: 18px;
+}
+
+.notification__message {
+  font-size: var(--small-font-size);
+}
+
+.notification__icon {
+  transition: 0.3s ease;
+  margin-right: 15px;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #999;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -15px;
+  left: 15px;
+  opacity: 0.9;
+  z-index: var(--z-fixed);
+}
+
+.notification__icon-square {
+  border-color: transparent;
+  border-radius: 3px;
+  height: 15px;
+  width: 15px;
+  z-index: -1;
+  position: absolute;
+  top: 28px;
+  left: 10px;
+  transform: rotate(57deg);
+}
+
+.notification__close-button {
+  transition: 0.3s ease;
+  position: absolute;
+  top: -13px;
+  right: -10px;
+  font-size: 12px;
+  padding: 20px 25px;
+  opacity: 0.9;
+  color: var(--white-color);
+}
+
+.notification__time-bar {
+  height: 2px;
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
 /*=============== COURSE CARDS ===============*/
 .card {
   position: relative;

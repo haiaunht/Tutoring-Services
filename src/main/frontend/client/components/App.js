@@ -8,12 +8,14 @@ import PageNotFound from "./PageNotFound/PageNotFound";
 
 const App = (props) => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/404" component={PageNotFound} />
-        <Route path="/" component={Main} />
-      </Switch>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/404" component={PageNotFound} />
+          <Route path="/" component={Main} />
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 };
 
