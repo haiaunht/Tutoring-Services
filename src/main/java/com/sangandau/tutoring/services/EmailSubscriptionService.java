@@ -39,7 +39,7 @@ public class EmailSubscriptionService {
         subject
     );
 
-    message.put("message", "Successfully subscribed!");
+    message.put("message", "Successfully subscribed. Thank you.");
     return new ResponseEntity<>(message, HttpStatus.CREATED);
   }
 
