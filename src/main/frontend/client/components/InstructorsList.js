@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { getData } from "../utils/FetchData/HelperFunctions";
 import InstructorCard from "./CourseCard/InstructorCard";
-import { getData } from "../utils/HelperFunctions";
 
 const InstructorsList = (props) => {
   const [instructorsList, setInstructorsList] = useState([]);

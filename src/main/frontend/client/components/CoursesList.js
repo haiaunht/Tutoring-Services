@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import CourseCard from "./CourseCard/CourseCard";
 import SkeletonCourseCard from "./LoadingSkeleton/SkeletonCourseCard";
-import { getData } from "../utils/HelperFunctions";
+import { getData } from "../utils/FetchData/HelperFunctions";
 
 const CoursesList = (props) => {
   const [courseType, setCourseType] = useState([]);

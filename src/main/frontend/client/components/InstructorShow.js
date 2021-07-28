@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
-import { getData } from "../utils/HelperFunctions";
+import { getData } from "../utils/FetchData/HelperFunctions";
 
 const InstructorShow = (props) => {
   const [instructor, setInstructor] = useState([]);
@@ -24,9 +24,7 @@ const InstructorShow = (props) => {
   return (
     <div className="courseDiv">
       <h1 className="middle">Instructor details:</h1>
-      <h3>
-        {instructor.fullName}
-      </h3>
+      <h3>{instructor.fullName}</h3>
       <h3>DO WE WANT OUR PICTURE HERE!</h3>
       <h3>Details: TO BE DISCUSSED IF WE WANT BIO HERE!</h3>
     </div>

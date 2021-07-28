@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 
 import InstructorShow from "./InstructorShow";
 import InstructorsList from "./InstructorsList";
-import { getData } from "../utils/HelperFunctions";
+import { getData } from "../utils/FetchData/HelperFunctions";
 
 const CourseShow = (props) => {
   const [courseDetail, setCourseDetail] = useState([]);

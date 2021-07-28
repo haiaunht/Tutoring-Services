@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { isEmailValid } from "../../utils/HelperFunctions";
+import { isEmailValid } from "../../utils/FetchData/HelperFunctions";
 
 const SubscriptionForm = (props) => {
   const { email, handleOnChangeEmail, handleSubmitEmail } = props;
