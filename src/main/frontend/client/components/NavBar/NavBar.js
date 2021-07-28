@@ -1,17 +1,15 @@
-import React, {useState} from "react";
-import {
-  NavLink,
-} from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { setAppStyleToNone } from "../../utils/FetchData/HelperFunctions";
 
-import { setAppStyleToNone } from "../../utils/HelperFunctions";
 import LoggedIn from "../Authentication/LoggedIn";
 import LoggedOut from "../Authentication/LoggedOut";
 
 const NavBar = (props) => {
   // const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("info")))
-  const [userInfo, setUserinfo] = useState("")
+  const [userInfo, setUserinfo] = useState("");
 
-  setAppStyleToNone();
+  setAppStyleToNone;
   //
   // if (loggedIn) {
   //   return (
@@ -65,15 +63,24 @@ const NavBar = (props) => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                {props.loggedIn ? <LoggedIn setLoggedIn={props.setLoggedIn} userInfo={userInfo} /> : <LoggedOut setLoggedIn={props.setLoggedIn} setUserinfo={setUserinfo}/> }
+                {props.loggedIn ? (
+                  <LoggedIn
+                    setLoggedIn={props.setLoggedIn}
+                    userInfo={userInfo}
+                  />
+                ) : (
+                  <LoggedOut
+                    setLoggedIn={props.setLoggedIn}
+                    setUserinfo={setUserinfo}
+                  />
+                )}
               </li>
               <li>
-                {!props.loggedIn ? <NavLink
-                    to="/signup"
-                    className="nav-link"
-                >
-                  Sign Up
-                </NavLink> : null}
+                {!props.loggedIn ? (
+                  <NavLink to="/signup" className="nav-link">
+                    Sign Up
+                  </NavLink>
+                ) : null}
               </li>
             </ul>
           </div>

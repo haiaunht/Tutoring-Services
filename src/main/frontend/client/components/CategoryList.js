@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import CourseCard from "./CourseCard/CourseCard";
 import SkeletonCourseCard from "./LoadingSkeleton/SkeletonCourseCard";
-import { getData } from "../utils/HelperFunctions";
+import { getData } from "../utils/FetchData/HelperFunctions";
 
 const CategoryList = (props) => {
   const [categories, setCategories] = useState([]);

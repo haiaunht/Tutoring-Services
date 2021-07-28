@@ -231,30 +231,58 @@ input:focus {
   font-size: 14px;
   position: fixed;
   z-index: var(--z-fixed);
+  width: 350px;
 }
 
 .notification__container--top-right {
   top: 80px;
   right: 10px;
-  animation: slide-in-right 0.4s ease, fade-out linear 1s 3s forwards;
 }
 
 .notification__container--top-left {
   top: 80px;
   left: 10px;
-  animation: slide-in-left 0.4s ease, fade-out linear 1s 3s forwards;
 }
 
 .notification__container--bottom-right {
   bottom: 12px;
   right: 10px;
-  animation: slide-in-right 0.4s ease, fade-out linear 1s 3s forwards;
 }
 
 .notification__container--bottom-left {
   bottom: 12px;
   left: 10px;
-  animation: slide-in-left 0.4s ease, fade-out linear 1s 3s forwards;
+}
+.notification__container--top-right .in {
+  animation: slide-in-right 0.4s ease forwards;
+}
+
+.notification__container--top-left .in {
+  animation: slide-in-left 0.4s ease forwards;
+}
+
+.notification__container--bottom-right .in {
+  animation: slide-in-right 0.4s ease forwards;
+}
+
+.notification__container--bottom-left .in {
+  animation: slide-in-left 0.4s ease forwards;
+}
+
+.notification__container--top-right .out {
+  animation: slide-out-right 0.4s ease forwards;
+}
+
+.notification__container--top-left .out {
+  animation: slide-out-left 0.4s ease forwards;
+}
+
+.notification__container--bottom-right .out {
+  animation: slide-out-right 0.4s ease forwards;
+}
+
+.notification__container--bottom-left .out {
+  animation: slide-out-left 0.4s ease forwards;
 }
 
 .notification__content {
@@ -263,7 +291,6 @@ input:focus {
   margin: 0 0 6px;
   padding: 10px 20px 20px;
   margin-bottom: 15px;
-  max-width: 350px;
   max-height: 100px;
   border-radius: 3px;
   box-shadow: 0 0 10px hsl(0, 0%, 60%);
@@ -274,7 +301,7 @@ input:focus {
   justify-content: center;
   overflow: hidden;
   position: relative;
-  border-radius: var(--mb-1);
+  border-radius: var(--mb-0-5);
 }
 
 .notification__content:hover {
@@ -402,37 +429,58 @@ input:focus {
   padding: 20px 25px;
   opacity: 0.9;
   color: var(--white-color);
+  cursor: pointer;
 }
 
 .notification__time-bar {
-  height: 2px;
+  height: 1px;
+  background: var(--body-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 @keyframes slide-in-right {
-  from {
+  0% {
     opacity: 0;
-    transform: translateX(100%);
+    margin-left: 120%;
   }
-  to {
+  100% {
     opacity: 0.9;
-    transform: translateX(0);
+    margin-left: 0;
   }
 }
 
 @keyframes slide-in-left {
-  from {
+  0% {
     opacity: 0;
-    transform: translateX(-100%);
+    margin-right: 120%;
   }
-  to {
+  100% {
     opacity: 0.9;
-    transform: translateX(0);
+    margin-right: 0;
   }
 }
 
-@keyframes fade-out {
-  to {
+@keyframes slide-out-right {
+  0% {
+    opacity: 0.9;
+    margin-left: 0;
+  }
+  100% {
     opacity: 0;
+    margin-left: 120%;
+  }
+}
+
+@keyframes slide-out-left {
+  0% {
+    opacity: 0.9;
+    margin-right: 0;
+  }
+  100% {
+    opacity: 0;
+    margin-right: 120%;
   }
 }
 /*=============== COURSE CARDS ===============*/

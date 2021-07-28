@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import TestimonialContent from "./TestimonialContent";
 import TestimonialArrow from "./TestimonialArrow";
 import TestimonialDots from "./TestimonialDots";
-import { getData } from "../../utils/HelperFunctions";
+import { getData } from "../../utils/FetchData/HelperFunctions";
 
 const Testimonial = ({ autoPlay, setAutoPlay }) => {
   const [testimonialContentStyle, setTestimonialContentStyle] = useState({
