@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useNotification } from "../../hooks/useNotification";
+import { Validators } from "../../utils/Validator/Validator";
+import { RadioInput } from "./RadioInput";
 import { TextInput } from "./TextInput";
 
 export const ContactForm = (props) => {
@@ -11,13 +14,35 @@ export const ContactForm = (props) => {
     message: "",
   };
   const [values, setValues] = useState(INITIAL_VALUE);
-
   const { firstName, lastName, email, phone, course, message } = values;
+  const dispatch = useNotification();
+
+  const sendNotification = (type, msg, autoCloseTime) => {
+    dispatch({
+      type,
+      message: msg,
+      title:
+        type === "SUCCESS"
+          ? "Well done!"
+          : type === "DANGER"
+          ? "Oh snap!"
+          : type === "INFO"
+          ? "Hi there,"
+          : "",
+      autoCloseTime,
+    });
+  };
 
   const handleOnChange = (e) => {
     const { name, value } = e.currentTarget;
-    setValues({ [name]: value });
+    setValues({ ...values, [name]: value });
   };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    sendNotification("INFO", "Your message is sending...", 2000);
+  };
+
   return (
     <>
       <div className="contact-form__container">
@@ -88,92 +113,97 @@ export const ContactForm = (props) => {
           </div>
         </div>
         <div className="contact-form__right-side">
-          <div className="contact-form__text-input w-47">
-            <TextInput />
-          </div>
-          <div className="contact-form__text-input w-47">
-            <TextInput />
-          </div>
-          <div className="contact-form__text-input w-47">
-            <TextInput />
-          </div>
-          <div className="contact-form__text-input w-47">
-            <TextInput />
-          </div>
+          <TextInput
+            styleClass={"contact-form__text-input  w-47"}
+            label="First Name"
+            onChange={handleOnChange}
+            placeholder={"Sang"}
+            value={firstName}
+            name="firstName"
+            validators={[
+              {
+                check: Validators.required,
+                message: "This field is required.",
+              },
+            ]}
+          />
+          <TextInput
+            styleClass={"contact-form__text-input  w-47"}
+            label="Last Name"
+            onChange={handleOnChange}
+            placeholder={"Vo"}
+            value={lastName}
+            name="lastName"
+            validators={[
+              {
+                check: Validators.required,
+                message: "This field is required.",
+              },
+            ]}
+          />
+          <TextInput
+            styleClass={"contact-form__text-input  w-47"}
+            label="Email"
+            onChange={handleOnChange}
+            type="email"
+            placeholder={"yauacom@yahoo.com"}
+            value={email}
+            name="email"
+            validators={[
+              {
+                check: Validators.email,
+                message: "Please enter a valid email.",
+              },
+            ]}
+          />
+          <TextInput
+            styleClass={"contact-form__text-input  w-47"}
+            label="Phone"
+            onChange={handleOnChange}
+            placeholder={"123 456 7890"}
+            value={phone}
+            name="phone"
+            validators={[
+              {
+                check: Validators.required,
+                message: "This field is required.",
+              },
+            ]}
+          />
           <div className="contact-form__text-input w-100">
             <p className="input__label">What course would you like?</p>
-            <label className="input__radio-label">
-              <input
-                type="radio"
-                checked={course === "frontEnd"}
-                name="course"
-                onChange={handleOnChange}
-                value="frontEnd"
-                className="input__radio"
-              />
-              <span className="input__radio-btn">
-                <i className="fas fa-check"></i>
-              </span>
-              <span className="input__radio-text">Front-end</span>
-            </label>
-            <label className="input__radio-label">
-              <input
-                type="radio"
-                checked={course === "backEnd"}
-                name="course"
-                onChange={handleOnChange}
-                value="backEnd"
-                className="input__radio"
-              />
-              <span className="input__radio-btn">
-                <i className="fas fa-check"></i>
-              </span>
-              <span className="input__radio-text">Back-end</span>
-            </label>
-            <label className="input__radio-label">
-              <input
-                type="radio"
-                checked={course === "database"}
-                name="course"
-                onChange={handleOnChange}
-                value="database"
-                className="input__radio"
-              />
-              <span className="input__radio-btn">
-                <i className="fas fa-check"></i>
-              </span>
-              <span className="input__radio-text">Database</span>
-            </label>
-            <label className="input__radio-label">
-              <input
-                type="radio"
-                checked={course === "algorithm"}
-                name="course"
-                onChange={handleOnChange}
-                value="algorithm"
-                className="input__radio"
-              />
-              <span className="input__radio-btn">
-                <i className="fas fa-check"></i>
-              </span>
-              <span className="input__radio-text">Algorithm</span>
-            </label>
+            <RadioInput
+              name={"course"}
+              value={course}
+              onChange={handleOnChange}
+              options={[
+                { val: "frontEnd", text: "Front-end" },
+                { val: "backEnd", text: "Back-end" },
+                { val: "database", text: "Database" },
+                { val: "algorithm", text: "Algorithm" },
+              ]}
+            />
           </div>
+          <TextInput
+            styleClass={"contact-form__text-input w-100"}
+            label="Message"
+            onChange={handleOnChange}
+            placeholder={"Write your message..."}
+            value={message}
+            name="message"
+            validators={[
+              {
+                check: Validators.required,
+                message: "This field is required.",
+              },
+            ]}
+          />
           <div className="contact-form__text-input w-100">
-            <label htmlFor="message" className="input__text-label">
-              Message
-            </label>
-            <textarea
-              name="message"
-              id="message"
-              cols="0"
-              rows="3"
-              placeholder="Write your message..."
-              className="input__text-field"
-            ></textarea>
-          </div>
-          <div className="contact-form__text-input w-100">
-            <button className="button contact-form__button-submit">
+            <button
+              type="button"
+              className="button contact-form__button-submit"
+              onClick={handleOnSubmit}
+            >
               Send Message
             </button>
           </div>

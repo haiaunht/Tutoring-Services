@@ -1,13 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { NotificationContext } from "../../context/notificationContext";
 
-const Notification = ({
-  id,
-  message,
-  type = "INFO",
-  title,
-  autoCloseTime = 4000,
-}) => {
+import PropTypes from "prop-types";
+
+const Notification = ({ id, message, type, title, autoCloseTime }) => {
   const { dispatch } = useContext(NotificationContext);
   const [exit, setExit] = useState(false);
   const [width, setWidth] = useState(0);
@@ -74,7 +70,7 @@ const Notification = ({
       case "SUCCESS":
         return "#2D6A4F";
       case "INFO":
-        return "#B8B5FF";
+        return "#739BE5";
       case "WARNING":
         return "#FCA652";
       case "DANGER":
@@ -89,7 +85,7 @@ const Notification = ({
       case "SUCCESS":
         return "#004440";
       case "INFO":
-        return "#7868E6";
+        return "#3F62A1";
       case "WARNING":
         return "#CC561E";
       case "DANGER":
@@ -186,6 +182,20 @@ const Notification = ({
       />
     </div>
   );
+};
+
+Notification.propTypes = {
+  id: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  title: PropTypes.string,
+  autoCloseTime: PropTypes.number,
+};
+
+Notification.defaultProps = {
+  type: "INFO",
+  title: "",
+  autoCloseTime: 4000,
 };
 
 export default Notification;
