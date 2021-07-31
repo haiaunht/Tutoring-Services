@@ -76,9 +76,13 @@ const AllCoursesList = (props) => {
     <>
       <span className="section-subtitle">Courses</span>
       <h2 className="section-title">Find the right courses for you</h2>
-      <div className="pagination">{pagination}</div>
+      <div className="pagination" style={{ display: "flex" }}>
+        {pagination}
+      </div>
       <div className="course__container grid">{coursesList}</div>
-      <div className="pagination">{pagination}</div>
+      <div className="pagination" style={{ display: "flex" }}>
+        {pagination}
+      </div>
     </>
   );
 

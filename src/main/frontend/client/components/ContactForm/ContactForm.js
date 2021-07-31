@@ -40,7 +40,13 @@ export const ContactForm = (props) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    sendNotification("INFO", "Your message is sending...", 2000);
+    sendNotification(
+      "INFO",
+      <a href="/">
+        Sending... <u>Click here to return to home page</u>
+      </a>,
+      2000
+    );
   };
 
   return (
