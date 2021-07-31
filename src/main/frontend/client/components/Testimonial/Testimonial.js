@@ -45,6 +45,7 @@ const Testimonial = ({ autoPlay, setAutoPlay }) => {
 
   useEffect(() => {
     getTestimonials();
+    return () => setTestimonials([]);
   }, []);
 
   const autoPlayRef = useRef();

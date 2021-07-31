@@ -1,15 +1,11 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { setAppStyleToNone } from "../../utils/FetchData/HelperFunctions";
-
 import LoggedIn from "../Authentication/LoggedIn";
 import LoggedOut from "../Authentication/LoggedOut";
 
 const NavBar = (props) => {
   // const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("info")))
-  const [userInfo, setUserinfo] = useState("");
-
-  setAppStyleToNone;
   //
   // if (loggedIn) {
   //   return (
@@ -17,76 +13,104 @@ const NavBar = (props) => {
   //   );
   // }
 
-  return (
-    <>
-      <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
-        <div className="container">
-          <NavLink to="/home" className="navbar-brand">
-            <span className="text-success">AS</span>tudy
-          </NavLink>
+  setAppStyleToNone;
+  const [userInfo, setUserinfo] = useState("");
+  const [showMenu, setShowMenu] = useState(false);
+  const [scrollDown, setScrollDown] = useState(false);
 
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navmenu"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navmenu">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <NavLink
-                  to="/home"
-                  className="nav-link"
-                  activeClassName="active"
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  to="/courses"
-                  className="nav-link"
-                  activeClassName="active"
-                >
-                  Courses
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  to="/contact"
-                  className="nav-link"
-                  activeClassName="active"
-                >
-                  Contact
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                {props.loggedIn ? (
-                  <LoggedIn
-                    setLoggedIn={props.setLoggedIn}
-                    userInfo={userInfo}
-                  />
-                ) : (
-                  <LoggedOut
-                    setLoggedIn={props.setLoggedIn}
-                    setUserinfo={setUserinfo}
-                  />
-                )}
-              </li>
-              <li>
-                {!props.loggedIn ? (
-                  <NavLink to="/signup" className="nav-link">
-                    Sign Up
-                  </NavLink>
-                ) : null}
-              </li>
-            </ul>
+  const handleToggle = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
+
+  useEffect(() => {
+    const changeBackgroundHeader = () => {
+      window.scrollY >= 80 ? setScrollDown(true) : setScrollDown(false);
+    };
+    window.addEventListener("scroll", changeBackgroundHeader);
+    return () => window.removeEventListener("scroll", changeBackgroundHeader);
+  }, []);
+
+  return (
+    <header className={scrollDown ? "header scroll-header" : "header"}>
+      <nav className="nav container">
+        <Link to="/home" className="nav__logo">
+          Astudy
+        </Link>
+        <div className={showMenu ? "nav__menu show-menu" : "nav__menu"}>
+          <ul className="nav__list grid">
+            <li className="nav__item">
+              <NavLink
+                to="/home"
+                className="nav__link"
+                activeClassName="active-link"
+                onClick={closeMenu}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className="nav__item">
+              <NavLink
+                to="/courses"
+                className="nav__link"
+                activeClassName="active-link"
+                onClick={closeMenu}
+              >
+                Courses
+              </NavLink>
+            </li>
+            <li className="nav__item">
+              <NavLink
+                to="/contact"
+                className="nav__link"
+                activeClassName="active-link"
+                onClick={closeMenu}
+              >
+                Contact
+              </NavLink>
+            </li>
+            <li className="nav__item">
+              <NavLink
+                to="/login"
+                className="nav__link"
+                activeClassName="active-link"
+                onClick={closeMenu}
+              >
+                Log in
+              </NavLink>
+            </li>
+            <li className="nav__item">
+              <NavLink
+                to="/signup"
+                className="nav__link"
+                activeClassName="active-link"
+                onClick={closeMenu}
+              >
+                Sign up
+              </NavLink>
+            </li>
+          </ul>
+
+          <div className="nav__change-theme">
+            <span className="nav__change-theme-name">Dark mode</span>
+            <i className="far fa-moon nav__change-theme-icon"></i>
           </div>
+
+          <i
+            className="fas fa-times nav__close"
+            id="nav-close"
+            onClick={handleToggle}
+          ></i>
+        </div>
+
+        <div className="nav__toggle" onClick={handleToggle}>
+          <i className="fas fa-th-large"></i>
         </div>
       </nav>
-    </>
+    </header>
   );
 };
 

@@ -44,10 +44,12 @@ const Notification = ({ id, message, type, title, autoCloseTime }) => {
       // Close notification
       handleCloseNotification();
     }
+    return () => setIntervalID(null);
   }, [width]);
 
   useEffect(() => {
     handleStartTimer();
+    return () => setIntervalID(null);
   }, []);
 
   const generateIcon = (type) => {
@@ -186,7 +188,10 @@ const Notification = ({ id, message, type, title, autoCloseTime }) => {
 
 Notification.propTypes = {
   id: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
+  message: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.object.isRequired,
+  ]),
   type: PropTypes.string,
   title: PropTypes.string,
   autoCloseTime: PropTypes.number,

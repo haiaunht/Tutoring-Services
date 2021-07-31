@@ -9,6 +9,7 @@ const SubscriptionForm = (props) => {
     isEmailValid(email.email)
       ? setButtonClassName("button subscribe__button")
       : setButtonClassName("subscribe__button-disabled");
+    return () => setButtonClassName("");
   }, [email]);
 
   return (
