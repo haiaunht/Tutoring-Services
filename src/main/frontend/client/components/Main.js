@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 
 import NavBar from "./NavBar/NavBar";
@@ -13,18 +13,23 @@ import InstructorsList from "./InstructorsList";
 import InstructorShow from "./InstructorShow";
 import SignUp from "./Authentication/SignUp";
 import CustomerPage from "./CustomerPage";
+import { ScrollTop } from "./ScrollTop/ScrollTop";
+import { ScrollRestoration } from "./ScrollTop/ScrollRestoration";
 
 const Main = () => {
-  const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("info")))
-  const [userWithId, setUserWithId] = useState(localStorage.getItem("userId"))
+  const [loggedIn, setLoggedIn] = useState(
+    Boolean(localStorage.getItem("info"))
+  );
+  const [userWithId, setUserWithId] = useState(localStorage.getItem("userId"));
 
   return (
     <BrowserRouter>
-      <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+      <ScrollRestoration />
+      <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Switch>
         <Route exact path="/">
           {/*<Redirect to="/home" />*/}
-          {loggedIn ? <CustomerPage userWithId={userWithId}/> : <HomePage />}
+          {loggedIn ? <CustomerPage userWithId={userWithId} /> : <HomePage />}
         </Route>
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/:categoryName/courses" component={CoursesList} />
@@ -42,6 +47,7 @@ const Main = () => {
         <Redirect to="/404" />
       </Switch>
       <Footer />
+      <ScrollTop />
     </BrowserRouter>
   );
 };
