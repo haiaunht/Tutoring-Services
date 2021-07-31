@@ -1,3 +1,4 @@
+import { set } from "lodash";
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { setAppStyleToNone } from "../../utils/FetchData/HelperFunctions";
@@ -8,23 +9,50 @@ const NavBar = (props) => {
   // const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("info")))
   //
   // if (loggedIn) {
-  //   return (
-  //       <Redirect to="/home" /> //????? need the navbar on top
-  //   );
+  // return (
+  //
+  // <Redirect to="/home" />; //????? need the navbar on top
+  // );
   // }
 
   setAppStyleToNone;
   const [userInfo, setUserinfo] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const [scrollDown, setScrollDown] = useState(false);
+  const [colorTheme, setColorTheme] = useState(
+    localStorage.getItem("theme-color") || "light"
+  );
 
-  const handleToggle = () => {
+  const changeTheme = (theme) => {
+    theme === "dark"
+      ? document.body.classList.add("dark-theme")
+      : document.body.classList.remove("dark-theme");
+  };
+
+  const handleChangeTheme = (theme) => {
+    setColorTheme(theme);
+    localStorage.setItem("theme-color", theme);
+    changeTheme(theme);
+  };
+
+  const handleToggleMenu = () => {
     setShowMenu(!showMenu);
   };
 
   const closeMenu = () => {
     setShowMenu(false);
   };
+
+  useEffect(() => {
+    const currentColorTheme = localStorage.getItem("theme-color");
+    if (currentColorTheme) {
+      setColorTheme(currentColorTheme);
+      changeTheme(colorTheme);
+    } else {
+      setColorTheme("light");
+    }
+    return setColorTheme(localStorage.getItem("theme-color"));
+  }, []);
 
   useEffect(() => {
     const changeBackgroundHeader = () => {
@@ -94,19 +122,32 @@ const NavBar = (props) => {
             </li>
           </ul>
 
-          <div className="nav__change-theme">
-            <span className="nav__change-theme-name">Dark mode</span>
-            <i className="far fa-moon nav__change-theme-icon"></i>
-          </div>
+          {colorTheme === "dark" ? (
+            <div
+              className="nav__change-theme"
+              onClick={() => handleChangeTheme("light")}
+            >
+              <span className="nav__change-theme-name">Dark mode</span>
+              <i className="far fa-sun nav__change-theme-icon"></i>
+            </div>
+          ) : (
+            <div
+              className="nav__change-theme"
+              onClick={() => handleChangeTheme("dark")}
+            >
+              <span className="nav__change-theme-name">Dark mode</span>
+              <i className="far fa-moon nav__change-theme-icon"></i>
+            </div>
+          )}
 
           <i
             className="fas fa-times nav__close"
             id="nav-close"
-            onClick={handleToggle}
+            onClick={handleToggleMenu}
           ></i>
         </div>
 
-        <div className="nav__toggle" onClick={handleToggle}>
+        <div className="nav__toggle" onClick={handleToggleMenu}>
           <i className="fas fa-th-large"></i>
         </div>
       </nav>

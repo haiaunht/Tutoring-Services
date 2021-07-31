@@ -42,7 +42,11 @@ const CategoryList = (props) => {
         <h2 className="section-title">Find the right courses for you</h2>
         <div className="course__container grid">{listOfCategories}</div>
         <div style={{ textAlign: "center" }}>
-          <Link to={"/courses"} className="button">
+          <Link
+            to={"/courses"}
+            className="button"
+            style={{ color: "var(--white-color)" }}
+          >
             View All Courses
           </Link>
         </div>
