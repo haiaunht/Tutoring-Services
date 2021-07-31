@@ -52,6 +52,7 @@ const Testimonial = ({ autoPlay, setAutoPlay }) => {
 
   useEffect(() => {
     autoPlayRef.current = nextTestimonial;
+    return;
   });
 
   useEffect(() => {

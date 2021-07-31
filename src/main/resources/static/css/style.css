@@ -155,6 +155,21 @@ img {
   height: auto;
 }
 
+button,
+input {
+  border: none;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
+
 input::placeholder {
   color: var(--text-color);
 }
@@ -262,18 +277,16 @@ input:focus {
 /*========== BUTTONS ==========*/
 .button {
   display: inline-block;
-  background-color: var(--title-color);
-  color: var(--body-color);
+  background-color: var(--first-color);
+  color: var(--white-color);
   padding: 0.75rem 1rem;
+  font-weight: var(--font-semi-bold);
   border-radius: 0.5rem;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px hsla(var(--hue-color), 61%, 16%, 0.1);
-  border: none;
 }
 
 .button:hover {
-  background-color: var(--text-color);
-  color: var(--body-color);
+  background-color: var(--first-color-alt);
   box-shadow: 0 16px 24px hsla(var(--hue-color), 61%, 16%, 0.35);
 }
 
@@ -916,7 +929,7 @@ input:focus {
 
 .contact-form__left-side {
   width: 350px;
-  background: var(--text-color);
+  background: var(--first-color);
   border-radius: var(--mb-0-5);
   padding: var(--mb-1-5);
   color: var(--white-color);
@@ -1009,7 +1022,7 @@ input:focus {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: var(--text-color);
+  background: var(--first-color);
   position: absolute;
   bottom: 52px;
   right: 120px;
@@ -1018,7 +1031,7 @@ input:focus {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: var(--text-color);
+  background: var(--first-color);
   position: absolute;
   bottom: 66px;
   right: 81px;
