@@ -193,6 +193,7 @@ export const ContactForm = (props) => {
           <TextInput
             styleClass={"contact-form__text-input w-100"}
             label="Message"
+            type="textarea"
             onChange={handleOnChange}
             placeholder={"Write your message..."}
             value={message}
