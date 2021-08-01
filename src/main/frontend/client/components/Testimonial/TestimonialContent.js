@@ -26,10 +26,14 @@ const TestimonialContent = ({ testimonial, width }) => {
               marginBottom: "var(--mb-2)",
             }}
           >
-            <p style={{ color: "var(--text-color-light)" }}>{description}</p>
-            <h5 style={{ color: "var(--text-color)" }}>
+            <p
+              style={{ color: "var(--text-color-light)", marginBottom: "1rem" }}
+            >
+              {description}
+            </p>
+            <h3 style={{ color: "var(--text-color)" }}>
               {name} - {job}
-            </h5>
+            </h3>
           </div>
         </div>
       </div>

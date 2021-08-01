@@ -107,19 +107,19 @@ const NavBar = (props) => {
                 activeClassName="active-link"
                 onClick={closeMenu}
               >
-                Log in
+                Sign in
               </NavLink>
             </li>
-            <li className="nav__item">
+            {/* <li className="nav__item">
               <NavLink
                 to="/signup"
                 className="nav__link"
                 activeClassName="active-link"
                 onClick={closeMenu}
               >
-                Get Started
+                Try now
               </NavLink>
-            </li>
+            </li> */}
           </ul>
 
           {colorTheme === "dark" ? (
