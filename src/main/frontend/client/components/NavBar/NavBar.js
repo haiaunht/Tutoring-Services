@@ -15,7 +15,7 @@ const NavBar = (props) => {
   // );
   // }
 
-  setAppStyleToNone;
+  setAppStyleToNone();
   const [userInfo, setUserinfo] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const [scrollDown, setScrollDown] = useState(false);
@@ -117,7 +117,7 @@ const NavBar = (props) => {
                 activeClassName="active-link"
                 onClick={closeMenu}
               >
-                Sign up
+                Get Started
               </NavLink>
             </li>
           </ul>

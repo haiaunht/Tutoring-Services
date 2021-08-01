@@ -27,7 +27,7 @@ export const ScrollTop = () => {
       }
       onClick={scrollTop}
     >
-      <i class="fas fa-arrow-up scroll-top__button-icon"></i>
+      <i className="fas fa-arrow-up scroll-top__button-icon"></i>
     </div>
   );
 };
