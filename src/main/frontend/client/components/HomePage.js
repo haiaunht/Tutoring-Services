@@ -6,6 +6,7 @@ import Sponsors from "./Sponsors/Sponsors";
 import _ from "lodash";
 import { useNotification } from "../hooks/useNotification";
 import { postData } from "../utils/FetchData/HelperFunctions";
+import { HeroSection } from "./HeroSection/HeroSection";
 
 const HomePage = () => {
   const [autoPlay, setAutoPlay] = useState(3);
@@ -40,6 +41,7 @@ const HomePage = () => {
 
   return (
     <>
+      <HeroSection />
       <CategoryList />
       <Testimonial autoPlay={autoPlay} setAutoPlay={setAutoPlay} />
       <SubscriptionForm

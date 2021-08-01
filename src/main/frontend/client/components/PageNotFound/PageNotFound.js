@@ -34,7 +34,7 @@ const PageNotFound = () => {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseenter", handleMouseEnter);
     window.addEventListener("mouseleave", handleMouseLeave);
-    return function cleanupListeners() {
+    return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseenter", handleMouseEnter);
       window.removeEventListener("mouseleave", handleMouseLeave);
@@ -57,7 +57,7 @@ const PageNotFound = () => {
         </div>
         <div className="cell"></div>
         <div className="cell">
-          <Link to="/">
+          <Link to="/home">
             <i className="fas fa-home"></i>
           </Link>
         </div>
