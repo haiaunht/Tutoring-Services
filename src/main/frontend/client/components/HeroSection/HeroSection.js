@@ -11,14 +11,14 @@ export const HeroSection = () => {
         <TextAnimation />
         <h1>Astudy</h1>
         <h5>Spend time wisely and get productive.</h5>
-        <Link to="/signup">
+        <Link to="/">
           <button className="button hero__section-button">
             7 Days Free Trial
           </button>
         </Link>
       </div>
       <div className="hero__section-cols--right">
-        <img src="./images/development.svg" alt />
+        <img src="./images/development.svg" alt="hero-section-image" />
       </div>
     </section>
   );

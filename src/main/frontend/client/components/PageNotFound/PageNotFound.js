@@ -4,12 +4,26 @@ import { Link } from "react-router-dom";
 
 const PageNotFound = () => {
   const appContainer = document.getElementById("app");
-  appContainer.style.cssText += `width: 100%;
-  height:100%;
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  background: #cdaeac url(../images/p404.png)`;
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseenter", handleMouseEnter);
+    window.addEventListener("mouseleave", handleMouseLeave);
+    appContainer.style.cssText += `width: 100%;
+    height:100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background: #cdaeac url(../images/p404.png)`;
+
+    return () => {
+      appContainer.style.cssText = "";
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseenter", handleMouseEnter);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  });
+
   const handleMouseMove = (e) => {
       let xAxis = window.innerWidth / 2 - e.pageX,
         yAxis = window.innerHeight / 2 - e.pageY,
@@ -29,17 +43,6 @@ const PageNotFound = () => {
       notFoundWrapper.style.transition = "0.5s ease";
       notFoundWrapper.style.transform = `rotateY(0deg) rotateX(0deg)`;
     };
-
-  useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseenter", handleMouseEnter);
-    window.addEventListener("mouseleave", handleMouseLeave);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseenter", handleMouseEnter);
-      window.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  });
   return (
     <>
       <div className="not-found-wrapper">

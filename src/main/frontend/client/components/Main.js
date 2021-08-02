@@ -11,10 +11,10 @@ import Footer from "./Footer/Footer";
 import CourseShow from "./CourseShow";
 import InstructorsList from "./InstructorsList";
 import InstructorShow from "./InstructorShow";
-import SignUp from "./Authentication/SignUp";
 import CustomerPage from "./CustomerPage";
 import { ScrollTop } from "./ScrollTop/ScrollTop";
 import { ScrollRestoration } from "./ScrollTop/ScrollRestoration";
+import { LoginForm } from "./LoginForm/LoginForm.js";
 
 const Main = () => {
   const [loggedIn, setLoggedIn] = useState(
@@ -28,8 +28,11 @@ const Main = () => {
       <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Switch>
         <Route exact path="/">
-          {/*<Redirect to="/home" />*/}
-          {loggedIn ? <CustomerPage userWithId={userWithId} /> : <HomePage />}
+          {loggedIn ? (
+            <CustomerPage userWithId={userWithId} />
+          ) : (
+            <LoginForm loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+          )}
         </Route>
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/:categoryName/courses" component={CoursesList} />
@@ -42,8 +45,6 @@ const Main = () => {
           component={InstructorShow}
         />
         <Route exact path="/contact" component={Contact} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={SignUp} />
         <Redirect to="/404" />
       </Switch>
       <Footer />

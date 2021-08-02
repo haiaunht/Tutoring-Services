@@ -1,22 +1,8 @@
-import { set } from "lodash";
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { setAppStyleToNone } from "../../utils/FetchData/HelperFunctions";
 import LoggedIn from "../Authentication/LoggedIn";
-import LoggedOut from "../Authentication/LoggedOut";
 
-const NavBar = (props) => {
-  // const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("info")))
-  //
-  // if (loggedIn) {
-  // return (
-  //
-  // <Redirect to="/home" />; //????? need the navbar on top
-  // );
-  // }
-
-  setAppStyleToNone();
-  const [userInfo, setUserinfo] = useState("");
+const NavBar = ({ loggedIn, setLoggedIn }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [scrollDown, setScrollDown] = useState(false);
   const [colorTheme, setColorTheme] = useState(
@@ -63,9 +49,12 @@ const NavBar = (props) => {
   }, []);
 
   return (
-    <header className={scrollDown ? "header scroll-header" : "header"}>
+    <header
+      className={scrollDown ? "header scroll-header" : "header"}
+      id="header"
+    >
       <nav className="nav container">
-        <Link to="/home" className="nav__logo">
+        <Link to="/" className="nav__logo">
           Astudy
         </Link>
         <div className={showMenu ? "nav__menu show-menu" : "nav__menu"}>
@@ -101,14 +90,13 @@ const NavBar = (props) => {
               </NavLink>
             </li>
             <li className="nav__item">
-              <NavLink
-                to="/login"
-                className="nav__link"
-                activeClassName="active-link"
-                onClick={closeMenu}
-              >
-                Sign in
-              </NavLink>
+              {loggedIn ? (
+                <LoggedIn setLoggedIn={setLoggedIn} />
+              ) : (
+                <Link to="/" className="nav__link" onClick={closeMenu}>
+                  Sign in
+                </Link>
+              )}
             </li>
             {/* <li className="nav__item">
               <NavLink
@@ -126,6 +114,7 @@ const NavBar = (props) => {
             <div
               className="nav__change-theme"
               onClick={() => handleChangeTheme("light")}
+              id="nav__change-theme"
             >
               <span className="nav__change-theme-name">Dark mode</span>
               <i className="far fa-sun nav__change-theme-icon"></i>
@@ -134,6 +123,7 @@ const NavBar = (props) => {
             <div
               className="nav__change-theme"
               onClick={() => handleChangeTheme("dark")}
+              id="nav__change-theme"
             >
               <span className="nav__change-theme-name">Dark mode</span>
               <i className="far fa-moon nav__change-theme-icon"></i>
