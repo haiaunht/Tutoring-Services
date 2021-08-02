@@ -1,130 +1,97 @@
-import React, {useState, useEffect} from "react";
-import _ from "lodash"
+import React, { useState, useEffect } from "react";
+import _ from "lodash";
 import Error from "../Error";
 
-const SignUp = props => {
+const SignUp = (props) => {
   const [userRegister, setUserRegister] = useState({
     fullName: "",
     username: "",
     password: "",
     email: "",
     phone: "",
-    roleId: 3
-  })
+    roleId: 3,
+  });
 
-  const [errors, setErrors] = useState("")
-  const [success, setSuccess] = useState(null)
+  const [errors, setErrors] = useState("");
+  const [success, setSuccess] = useState(null);
 
   const addNewRegistration = async (userRegister) => {
-    let formPayload = userRegister
-    formPayload.role = {id: 3, name: "User", description: "User"}
+    let formPayload = userRegister;
+    formPayload.role = { id: 3, name: "User", description: "User" };
     try {
       const response = await fetch("/api/v1/users/new-user", {
-          method: "POST",
-          headers: new Headers({
-            "Content-Type": "application/json"
-          }),
-          body: JSON.stringify(formPayload)
-      })
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+        body: JSON.stringify(formPayload),
+      });
 
       if (response.ok) {
-        console.log("New user added successfully!")
-        setSuccess("Thank you for register with us!")
+        console.log("New user added successfully!");
+        setSuccess("Thank you for register with us!");
       } else {
-        setErrors("Username or email are already existed")
+        setErrors("Username or email are already existed");
       }
-
     } catch (err) {
-      console.error("Error in post new user!")
+      console.error("Error in post new user!");
     }
-  }
+  };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setUserRegister({
       ...userRegister,
-      [event.currentTarget.name]: event.currentTarget.value
-    })
-  }
+      [event.currentTarget.name]: event.currentTarget.value,
+    });
+  };
 
-  const handleSubmit = event => {
-    event.preventDefault()
-    const newRegister = {...userRegister, role: {name: "User"}}
-    addNewRegistration(newRegister)
-    console.log(errors)
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const newRegister = { ...userRegister, role: { name: "User" } };
+    addNewRegistration(newRegister);
+    console.log(errors);
+  };
 
   return (
-      <div className="container py-md-5">
-        <div className="row align-items-center">
-          <div className="col-lg-7 py-3 py-md-5">
-            <h1 className="display-3">Want to become a great software developer?</h1>
-          </div>
-          <div className="col-lg-5 pl-lg-5 pb-3 py-lg-5">
-            <Error errors={errors} />
-            <h2>{success}</h2>
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="fullName" className="text-muted mb-1">
-                  <small>Full name</small>
-                </label>
-                <input onChange={handleChange}
-                    id="fullName"
-                    name="fullName"
-                    className="form-control"
-                    type="text"
-                    placeholder="Full name here"
-                    autoComplete="off"
-              />
-              </div>
+    <div className="sign-up-page">
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <input
+          type="text"
+          placeholder="Full Name"
+          onChange={handleChange}
+          value={userRegister.fullName}
+          name="fullName"
+        />
+        <input
+          type="text"
+          placeholder="Username"
+          onChange={handleChange}
+          value={userRegister.username}
+          name="username"
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          onChange={handleChange}
+          value={userRegister.email}
+          name="email"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+          value={userRegister.password}
+          name="password"
+        />
+        {/* <input type="password" placeholder="Repeat Password" /> */}
+        <button type="submit">Sign Up</button>
+        <p className="term-text">
+          By creating an account you agree to our Terms of Service and Privacy
+          Policy.
+        </p>
+      </form>
+    </div>
+  );
+};
 
-              <div className="form-group">
-                <label htmlFor="username" className="text-muted mb-1">
-                  <small>Username</small>
-                </label>
-                <input onChange={handleChange}
-                    id="username"
-                    name="username"
-                    className="form-control"
-                    type="text"
-                    placeholder="Pick a username"
-                    autoComplete="off"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email" className="text-muted mb-1">
-                  <small>Email</small>
-                </label>
-                <input onChange={handleChange}
-                    id="email"
-                    name="email"
-                    className="form-control"
-                    type="text"
-                    placeholder="you@example.com"
-                    autoComplete="off"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password" className="text-muted mb-1">
-                  <small>Password</small>
-                </label>
-                <input onChange={handleChange}
-                    id="password"
-                    name="password"
-                    className="form-control"
-                    type="password"
-                    placeholder="Create a password"
-                />
-              </div>
-              <input
-                  type="submit"
-                  className="py-3 mt-4 btn btn-lg btn-success btn-block"
-                  value = "Sign Up"
-              />
-            </form>
-          </div>
-        </div>
-      </div>
-  )
-}
-
-export default SignUp
+export default SignUp;

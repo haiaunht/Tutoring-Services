@@ -1,65 +1,58 @@
-import React, {useState, useEffect} from "react"
-import SignUp from "./SignUp";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 
-const LoggedOut = (props) => {
-  const [username, setUsername] = useState()
-  const [password, setPassword] = useState()
+const LoggedOut = ({ setLoggedIn }) => {
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
 
   const fetchUser = async () => {
     try {
-      const response = await fetch(`/api/v1/users/${username}/${password}`)
+      const response = await fetch(`/api/v1/users/${username}/${password}`);
 
       if (response.ok) {
-        props.setLoggedIn(true)
+        setLoggedIn(true);
       } else {
-        console.log("Invalid username / password")
+        console.log("Invalid username / password");
       }
 
-      const body = await response.json()
-      console.log(body.id)
-      props.setUserinfo(body.fullName)
-      localStorage.setItem("userId", body.id)
-      localStorage.setItem("info", body.fullName)
-      localStorage.setItem("username", body.username)
-
+      const body = await response.json();
+      console.log(body.id);
+      localStorage.setItem("userId", body.id);
+      localStorage.setItem("info", body.fullName);
+      localStorage.setItem("username", body.username);
     } catch (err) {
-      console.log("There was a problem")
+      console.log("There was a problem");
     }
-  }
+  };
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    fetchUser()
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetchUser();
+  };
 
   return (
-      <>
-      <form onSubmit={handleSubmit}  className="nav-link">
-        <div className="row align-items-center">
-          <div className="col-md mr-0 pr-md-0 mb-3 mb-md-0">
-            <input onChange={e => setUsername(e.target.value)}
-                   name="username"
-                   className="form-control form-control-sm input-dark"
-                   type="text"
-                   placeholder="Username"
-                   autoComplete="off"
-            />
-          </div>
-          <div className="col-md mr-0 pr-md-0 mb-3 mb-md-0">
-            <input onChange={e => setPassword(e.target.value)}
-                   name="password"
-                   className="form-control form-control-sm input-dark"
-                   type="password"
-                   placeholder="Password"
-            />
-          </div>
-          <div className="col-md-auto">
-            <button className="btn btn-success btn-sm">Sign In</button>
-          </div>
-        </div>
+    <div className="sign-in-page">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          autoComplete="off"
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Sign In</button>
+        <p className="info-text">Forgot Password?</p>
       </form>
-      </>
-  )
-}
+    </div>
+  );
+};
 
-export default LoggedOut
+export default LoggedOut;
