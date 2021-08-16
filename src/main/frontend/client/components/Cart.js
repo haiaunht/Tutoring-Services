@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from "react"
 import CartItemCard from "./CourseCard/CartItemCard";
+import {sumBy} from "lodash/math";
 
 const Cart = (props) => {
   console.log("At cart")
 
   const [cartDetails, setCartDetails] = useState([])
   const [userWithId, setUserWithId] = useState(localStorage.getItem("userId"));
+  const [total, setTotal] = useState(null)
   console.log(userWithId)
 
   const getCartItem = async () => {
@@ -40,6 +42,11 @@ const Cart = (props) => {
     )
   })
 
+  let sum = cartDetails.reduce(function (prev, current) {
+    return prev + current.course.price
+  }, 0)
+  console.log(sum)
+
   return (
       <>
         <h1> --</h1>
@@ -49,6 +56,8 @@ const Cart = (props) => {
 
         <h1>Your cart:</h1>
         {cartDetailsList}
+        <h2>Your total is: ${sum.toFixed(2)}</h2>
+        <button>Check Out</button>
 
       </>
   )
