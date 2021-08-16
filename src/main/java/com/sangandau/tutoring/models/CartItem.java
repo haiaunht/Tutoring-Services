@@ -1,6 +1,7 @@
 package com.sangandau.tutoring.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,13 +29,13 @@ public class CartItem {
 
   @ManyToOne
   @JoinColumn(name = "user_id")
-//  @JsonBackReference
+  @JsonManagedReference
   private User user;
 
 
   @ManyToOne
   @JoinColumn(name = "course_id")
-//  @JsonBackReference
+  @JsonManagedReference
   private Course course;
 
   private Integer quantity;

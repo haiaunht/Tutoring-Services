@@ -1,6 +1,8 @@
 package com.sangandau.tutoring.controllers;
 
+import com.sangandau.tutoring.global.GlobalData;
 import com.sangandau.tutoring.models.CartItem;
+import com.sangandau.tutoring.models.Course;
 import com.sangandau.tutoring.models.User;
 import com.sangandau.tutoring.services.CourseService;
 import com.sangandau.tutoring.services.ShoppingCartService;
@@ -31,10 +33,20 @@ public class CartController {
     return shoppingCartService.listCartItem(findUser);
   }
 
-  @PostMapping
-  public void create(@RequestBody CartItem cartItem) {
+  @GetMapping("/addToCart/{courseId}")
+  public void addToCart(@PathVariable Integer courseId) {
+    GlobalData.cart.add(courseService.findById(courseId).get());
+  }
+
+  @PostMapping("/{userId}/addToCart/{courseId}")
+  public CartItem addToShopping(@PathVariable Integer userId, @PathVariable Integer courseId) {
+    return shoppingCartService.saveFromUserIdAndCourseId(userId,courseId);
+  }
+
+  @PostMapping("/add")
+  public CartItem create(@RequestBody CartItem cartItem) {
     System.out.println(cartItem);
-    shoppingCartService.save(cartItem);
+    return shoppingCartService.save(cartItem);
   }
 
 }

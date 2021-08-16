@@ -46,16 +46,41 @@ const CourseShow = (props) => {
 
   const addCourseToCart = async (item) => {
     let formPayload = item
-    formPayload.courseId = courseDetail.id
-    formPayload.userId = 3
+    // formPayload.courseId = courseDetail.id
+    // formPayload.userId = 3
 
     try {
-      const response = await fetch("/api/v1/cartItems", {
+      const response = await fetch("/api/v1/cartItems/add", {
         method: "POST",
         headers: new Headers({
-          "Content-Type": "application/json; charset=UTF-8"
+          "Content-Type": "text/html"
         }),
-        body: JSON.stringify(formPayload)
+        body: JSON.stringify(item)
+      })
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw error
+      } else {
+        const body = await response.json()
+        if (body) {
+          console.log("Successful add item to cart")
+        }
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
+  const addCourse = async () => {
+    console.log(courseDetail.id)
+    try {
+      const response = await fetch(`/api/v1/cartItems/3/addToCart/${courseDetail.id}`, {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "text/html"
+        }),
+        body: JSON.stringify(item)
       })
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
@@ -80,7 +105,8 @@ const CourseShow = (props) => {
     item.quantity = 1
     const itemObj = {...item, user: {id: Integer.parseInt(userWithId)}, course: {id:courseDetail.id}}
     console.log(item)
-    addCourseToCart(itemObj)
+    // addCourseToCart(itemObj)
+    addCourse()
   }
 
   let display = showInstructor ? <InstructorsList /> : "";

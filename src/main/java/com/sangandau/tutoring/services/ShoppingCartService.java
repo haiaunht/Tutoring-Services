@@ -52,4 +52,15 @@ public class ShoppingCartService {
 
     return cartItemRepository.save(cartItem);
   }
+
+  public CartItem saveFromUserIdAndCourseId(Integer userId, Integer courseId) {
+    Optional<User> currentUser = userRepository.findById(userId);
+    Optional<Course> currentCourse = courseRepository.findById(courseId);
+    CartItem cartItem = new CartItem();
+    cartItem.setQuantity(1);
+    cartItem.setUser(currentUser.get());
+    cartItem.setCourse(currentCourse.get());
+
+    return cartItemRepository.save(cartItem);
+  }
 }
