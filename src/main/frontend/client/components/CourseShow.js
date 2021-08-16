@@ -45,10 +45,6 @@ const CourseShow = (props) => {
   })
 
   const addCourseToCart = async (item) => {
-    let formPayload = item
-    // formPayload.courseId = courseDetail.id
-    // formPayload.userId = 3
-
     try {
       const response = await fetch("/api/v1/cartItems/add", {
         method: "POST",

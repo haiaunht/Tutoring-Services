@@ -18,6 +18,7 @@ const CartItemCard = (props) => {
             <h3 className="card__course-title">{user.fullName}</h3>
             <div className="card__course-description">{course.name}</div>
             <div className="card__course-instructor">{quantity}</div>
+            <div className="card__course-instructor">{course.price}</div>
           </div>
 
 
