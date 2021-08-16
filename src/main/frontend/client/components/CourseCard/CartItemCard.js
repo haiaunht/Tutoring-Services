@@ -20,7 +20,7 @@ const CartItemCard = (props) => {
             <div className="card__course-instructor">{quantity}</div>
           </div>
 
-        <button>Check Out</button>
+
           {/*<div className="button card__course-button"><i className="fas fa-plus"></i></div>*/}
         {/*</Link>*/}
       </>

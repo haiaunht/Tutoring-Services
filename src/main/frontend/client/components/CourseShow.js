@@ -74,8 +74,9 @@ const CourseShow = (props) => {
 
   const addCourse = async () => {
     console.log(courseDetail.id)
+    const userId = Integer.parseInt(userWithId)
     try {
-      const response = await fetch(`/api/v1/cartItems/3/addToCart/${courseDetail.id}`, {
+      const response = await fetch(`/api/v1/cartItems/${userId}/addToCart/${courseDetail.id}`, {
         method: "POST",
         headers: new Headers({
           "Content-Type": "text/html"

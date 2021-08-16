@@ -49,6 +49,7 @@ const Cart = (props) => {
 
         <h1>Your cart:</h1>
         {cartDetailsList}
+        <button>Check Out</button>
 
       </>
   )
