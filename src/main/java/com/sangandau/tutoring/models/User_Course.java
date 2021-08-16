@@ -15,9 +15,15 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "users_courses")
+@Getter
+@Setter
+@NoArgsConstructor
 public class User_Course {
   @Id
   @SequenceGenerator(name="compose_generator", sequenceName="users_courses_id_seq", allocationSize = 1)
@@ -26,20 +32,12 @@ public class User_Course {
   private Integer id;
 
   @ManyToOne
-
   @JoinColumn(name = "user_id")
   private User user;
-//
-//  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//  @JsonIgnoreProperties("user")
-//  List<User> userList = new ArrayList<>();
+
 
   @ManyToOne
-
   @JoinColumn(name = "course_id")
   private Course course;
-//
-//  @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
-//  @JsonIgnoreProperties("course")
-//  List<Course> courseList = new ArrayList<>();
+
 }

@@ -4,11 +4,19 @@ import { Link, Redirect } from "react-router-dom";
 import InstructorShow from "./InstructorShow";
 import InstructorsList from "./InstructorsList";
 import { getData } from "../utils/FetchData/HelperFunctions";
+import Integer from "lodash/string";
 
 const CourseShow = (props) => {
   const [courseDetail, setCourseDetail] = useState([]);
   const [courseNotFound, setCourseNotFound] = useState(null);
   const [showInstructor, setShowInstructor] = useState(false);
+  const [userWithId, setUserWithId] = useState(localStorage.getItem("userId"));
+  const [user, setUser] = useState([])
+
+  const getUser = async () => {
+    const data = await getData(`/api/v1/users/${userWithId}`)
+    setUser(data)
+  }
 
   const getCourse = async () => {
     const courseName = props.match.params.courseName;
@@ -18,6 +26,7 @@ const CourseShow = (props) => {
 
   useEffect(() => {
     getCourse();
+    getUser();
   }, []);
 
   if (courseNotFound) {
@@ -28,6 +37,51 @@ const CourseShow = (props) => {
     event.preventDefault();
     setShowInstructor(!showInstructor);
   };
+
+  const [item, setItem] = useState({
+    user: "",
+    course: "",
+    quantity: 1
+  })
+
+  const addCourseToCart = async (item) => {
+    let formPayload = item
+    formPayload.courseId = courseDetail.id
+    formPayload.userId = 3
+
+    try {
+      const response = await fetch("/api/v1/cartItems", {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "application/json; charset=UTF-8"
+        }),
+        body: JSON.stringify(formPayload)
+      })
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw error
+      } else {
+        const body = await response.json()
+        if (body) {
+          console.log("Successful add item to cart")
+        }
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
+  const addToCart = (event) => {
+    event.preventDefault()
+    //push to api @posting
+    item.user = user
+    item.course = courseDetail
+    item.quantity = 1
+    const itemObj = {...item, user: {id: Integer.parseInt(userWithId)}, course: {id:courseDetail.id}}
+    console.log(item)
+    addCourseToCart(itemObj)
+  }
 
   let display = showInstructor ? <InstructorsList /> : "";
 
@@ -46,6 +100,9 @@ const CourseShow = (props) => {
         <div onClick={showCard}>
           <button>Find Instructor for this course!</button>
         </div>
+        <form onSubmit={addToCart}>
+          <button>Add To Cart</button>
+        </form>
       </div>
       <div>{display}</div>
     </>

@@ -27,6 +27,11 @@ public class UserRestApiController {
     this.userService = userService;
   }
 
+  @GetMapping("/{id}")
+  public User findUser(@PathVariable Integer id) {
+    return userService.findById(id).get();
+  }
+
   @PostMapping("/new-user")
   public User create(@RequestBody User newUser) {
     String email = newUser.getEmail();

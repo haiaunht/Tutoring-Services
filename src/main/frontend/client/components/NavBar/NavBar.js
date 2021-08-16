@@ -59,6 +59,7 @@ const NavBar = ({ loggedIn, setLoggedIn }) => {
         </Link>
         <div className={showMenu ? "nav__menu show-menu" : "nav__menu"}>
           <ul className="nav__list grid">
+
             <li className="nav__item">
               <NavLink
                 to="/home"
@@ -98,16 +99,16 @@ const NavBar = ({ loggedIn, setLoggedIn }) => {
                 </Link>
               )}
             </li>
-            {/* <li className="nav__item">
+            <li className="nav__item">
               <NavLink
-                to="/signup"
-                className="nav__link"
-                activeClassName="active-link"
-                onClick={closeMenu}
+                  to="/cart"
+                  className="nav__link"
+                  activeClassName="active-link"
+                  onClick={closeMenu}
               >
-                Try now
+                <i className="fas fa-shopping-cart"></i>
               </NavLink>
-            </li> */}
+            </li>
           </ul>
 
           {colorTheme === "dark" ? (

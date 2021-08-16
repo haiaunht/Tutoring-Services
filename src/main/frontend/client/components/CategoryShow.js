@@ -7,3 +7,5 @@ const CategoryShow = props => {
         </>
     )
 }
+
+export default CategoryShow
