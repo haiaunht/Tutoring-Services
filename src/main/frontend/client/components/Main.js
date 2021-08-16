@@ -15,6 +15,7 @@ import CustomerPage from "./CustomerPage";
 import { ScrollTop } from "./ScrollTop/ScrollTop";
 import { ScrollRestoration } from "./ScrollTop/ScrollRestoration";
 import { LoginForm } from "./LoginForm/LoginForm.js";
+import Cart from "./Cart";
 
 const Main = () => {
   const [loggedIn, setLoggedIn] = useState(
@@ -39,6 +40,7 @@ const Main = () => {
         <Route exact path="/courses/" component={AllCoursesList} />
         <Route exact path="/courses/:courseName" component={CourseShow} />
         <Route exact path="/instructors/all" component={InstructorsList} />
+        <Route exact path="/cart" component={Cart} />
         <Route
           exact
           path="/instructors/:instructorId"

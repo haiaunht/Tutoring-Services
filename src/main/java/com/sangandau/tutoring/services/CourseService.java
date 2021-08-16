@@ -22,6 +22,10 @@ public class CourseService {
     return courseRepository.findAll(pageable);
   }
 
+  public Optional<Course> findById(Integer id) {
+    return courseRepository.findById(id);
+  }
+
   public Optional<Course> findCourseByName(String courseName) {
     return courseRepository.findCourseByName(courseName);
   }

@@ -62,7 +62,8 @@ public class User {
 
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
-      name="users_courses",
+//      name="users_courses",
+      name="cart_items",
       joinColumns = {
           @JoinColumn(name="user_id", nullable=false)
       },
@@ -73,4 +74,13 @@ public class User {
   @JsonIgnoreProperties("users")
   @JsonBackReference
   private Set<Course> courses;
+
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @JsonBackReference
+  @JsonIgnoreProperties("user")
+  private List<CartItem> cartItems = new ArrayList<>();
+
+  public User(Integer id) {
+    this.id = id;
+  }
 }

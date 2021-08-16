@@ -64,4 +64,12 @@ public class Course {
   @JsonIgnoreProperties("courses")
   private Set<User> users;
 
+  @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+  @JsonBackReference
+  @JsonIgnoreProperties("course")
+  private List<CartItem> cartItems = new ArrayList<>();
+
+  public Course(Integer id) {
+    this.id = id;
+  }
 }
