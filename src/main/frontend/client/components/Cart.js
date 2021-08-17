@@ -112,8 +112,11 @@ const Cart = (props) => {
       (<div>
         <h1>Your cart:</h1>
         {cartDetailsList}
-        <h2>Your total is: ${sum.toFixed(2)}</h2>
-        <button onClick={checkout}>Place Order</button>
+        <div id="total">
+          <h2 >Your total is: ${sum.toFixed(2)}</h2>
+          <button onClick={checkout}>Place Order</button>
+        </div>
+
       </div>)
 
   return (
