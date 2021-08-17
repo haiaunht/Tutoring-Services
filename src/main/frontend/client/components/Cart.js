@@ -1,14 +1,9 @@
 import React, {useState, useEffect} from "react"
 import CartItemCard from "./CourseCard/CartItemCard";
-import {sumBy} from "lodash/math";
 
 const Cart = (props) => {
-  console.log("At cart")
-
   const [cartDetails, setCartDetails] = useState([])
   const [userWithId, setUserWithId] = useState(localStorage.getItem("userId"));
-  const [total, setTotal] = useState(null)
-  console.log(userWithId)
 
   const getCartItem = async () => {
     try {
@@ -29,6 +24,38 @@ const Cart = (props) => {
     getCartItem()
   }, [])
 
+  const [itemToRemove, setItemToRemove] = useState({
+    user: "",
+    course: "",
+    quantity: 1
+  })
+  const [doneDelete, setDoneDelete] = useState(false)
+
+  const removeCartItem = async (itemCartId) => {
+    try {
+      const response = await fetch(`/api/v1/cartItems/${userWithId}/removeFromCart/${itemCartId}`, {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "text/html"
+        }),
+        body: JSON.stringify(itemToRemove)
+      })
+      setDoneDelete(true)
+
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
+  const remove = (cartItemId) => {
+    console.log("remove this course: " + cartItemId)
+    removeCartItem(cartItemId)
+  }
+
+  if (doneDelete) {
+    window.location.reload(true);
+  }
+
   console.log(cartDetails)
   const cartDetailsList = cartDetails.map(item => {
     return (
@@ -38,6 +65,7 @@ const Cart = (props) => {
           user={item.user}
           course={item.course}
           quantity={item.quantity}
+          remove={remove}
         />
     )
   })
@@ -58,7 +86,6 @@ const Cart = (props) => {
         {cartDetailsList}
         <h2>Your total is: ${sum.toFixed(2)}</h2>
         <button>Check Out</button>
-
       </>
   )
 }

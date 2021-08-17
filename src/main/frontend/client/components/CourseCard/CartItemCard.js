@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CartItemCard = (props) => {
-  console.log(props)
   const {
     id,
     user,
@@ -10,6 +9,12 @@ const CartItemCard = (props) => {
     quantity
     // link,
   } = props;
+
+  const removeCourse = event => {
+    event.preventDefault()
+    console.log("cart item: " + props.id)
+    props.remove(props.id)
+  }
 
   return (
       <>
@@ -19,6 +24,7 @@ const CartItemCard = (props) => {
             <div className="card__course-description">{course.name}</div>
             <div className="card__course-instructor">{quantity}</div>
             <div className="card__course-instructor">{course.price}</div>
+            <button onClick={removeCourse}>Remove</button>
           </div>
 
 

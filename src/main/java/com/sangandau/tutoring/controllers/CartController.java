@@ -43,6 +43,11 @@ public class CartController {
     return shoppingCartService.saveFromUserIdAndCourseId(userId,courseId);
   }
 
+  @PostMapping("/{userId}/removeFromCart/{cartId}")
+  public void removeFromCart(@PathVariable Integer userId, @PathVariable Integer cartId) {
+    shoppingCartService.remove(cartId);
+  }
+
   @PostMapping("/add")
   public CartItem create(@RequestBody CartItem cartItem) {
     System.out.println(cartItem);
