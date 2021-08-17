@@ -12,6 +12,7 @@ const CourseShow = (props) => {
   const [showInstructor, setShowInstructor] = useState(false);
   const [userWithId, setUserWithId] = useState(localStorage.getItem("userId"));
   const [user, setUser] = useState([])
+  const [successful, setSuccessful] = useState(false)
 
   const getUser = async () => {
     const data = await getData(`/api/v1/users/${userWithId}`)
@@ -87,6 +88,7 @@ const CourseShow = (props) => {
         const body = await response.json()
         if (body) {
           console.log("Successful add item to cart")
+          setSuccessful(true)
         }
       }
     } catch (error) {
@@ -106,6 +108,7 @@ const CourseShow = (props) => {
   }
 
   let display = showInstructor ? <InstructorsList /> : "";
+  let notify = (successful) ? "Your course is added to cart!" : ""
 
   return (
     <>
@@ -125,6 +128,7 @@ const CourseShow = (props) => {
         <form onSubmit={addToCart}>
           <button>Add To Cart</button>
         </form>
+        {notify}
       </div>
       <div>{display}</div>
     </>

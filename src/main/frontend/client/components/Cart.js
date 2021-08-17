@@ -4,6 +4,7 @@ import CartItemCard from "./CourseCard/CartItemCard";
 const Cart = (props) => {
   const [cartDetails, setCartDetails] = useState([])
   const [userWithId, setUserWithId] = useState(localStorage.getItem("userId"));
+  const [paid, setPaid] = useState(false)
 
   const getCartItem = async () => {
     try {
@@ -73,7 +74,48 @@ const Cart = (props) => {
   let sum = cartDetails.reduce(function (prev, current) {
     return prev + current.course.price
   }, 0)
-  console.log(sum)
+
+  const addToUserCourse = async (item) => {
+    let userId = item.user.id
+    let courseId = item.course.id
+    try {
+      const response = await fetch(`/api/v1/user-course/${userId}/paid/${courseId}`, {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "text/html"
+        }),
+        body: JSON.stringify(item)
+      })
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw error
+      } else {
+        const body = await response.json()
+        if (body) {
+          console.log("Successful add item to cart")
+          setPaid(true)
+        }
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
+  const checkout = () => {
+    console.log("Paid")
+    cartDetails.map(item => addToUserCourse(item))
+  }
+
+  let display = (paid) ?
+      (<h2>There is nothing in your cart</h2>) :
+
+      (<div>
+        <h1>Your cart:</h1>
+        {cartDetailsList}
+        <h2>Your total is: ${sum.toFixed(2)}</h2>
+        <button onClick={checkout}>Place Order</button>
+      </div>)
 
   return (
       <>
@@ -81,11 +123,8 @@ const Cart = (props) => {
         <h1> --</h1>
         <h1> --</h1>
         <h1> --</h1>
+        {display}
 
-        <h1>Your cart:</h1>
-        {cartDetailsList}
-        <h2>Your total is: ${sum.toFixed(2)}</h2>
-        <button>Check Out</button>
       </>
   )
 }
