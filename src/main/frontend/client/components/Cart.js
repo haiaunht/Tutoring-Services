@@ -57,7 +57,6 @@ const Cart = (props) => {
     window.location.reload(true);
   }
 
-  console.log(cartDetails)
   const cartDetailsList = cartDetails.map(item => {
     return (
         <CartItemCard
@@ -94,7 +93,6 @@ const Cart = (props) => {
         const body = await response.json()
         if (body) {
           console.log("Successful add item to cart")
-          setPaid(true)
         }
       }
     } catch (error) {
@@ -103,13 +101,14 @@ const Cart = (props) => {
   }
 
   const checkout = () => {
-    console.log("Paid")
+    console.log(paid)
     cartDetails.map(item => addToUserCourse(item))
+    cartDetails.map(item => remove(item.id))
+    setPaid(true)
   }
 
-  let display = (paid) ?
-      (<h2>There is nothing in your cart</h2>) :
-
+  let display = (paid || cartDetails.length === 0) ?
+      (<h2>Your cart is empty!</h2>) :
       (<div>
         <h1>Your cart:</h1>
         {cartDetailsList}
@@ -124,7 +123,6 @@ const Cart = (props) => {
         <h1> --</h1>
         <h1> --</h1>
         {display}
-
       </>
   )
 }
