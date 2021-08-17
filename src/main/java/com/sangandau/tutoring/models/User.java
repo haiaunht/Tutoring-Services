@@ -62,8 +62,8 @@ public class User {
 
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
-//      name="users_courses",
-      name="cart_items",
+      name="users_courses",
+//      name="cart_items",
       joinColumns = {
           @JoinColumn(name="user_id", nullable=false)
       },

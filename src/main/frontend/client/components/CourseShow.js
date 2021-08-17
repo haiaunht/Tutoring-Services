@@ -96,7 +96,6 @@ const CourseShow = (props) => {
 
   const addToCart = (event) => {
     event.preventDefault()
-    //push to api @posting
     item.user = user
     item.course = courseDetail
     item.quantity = 1

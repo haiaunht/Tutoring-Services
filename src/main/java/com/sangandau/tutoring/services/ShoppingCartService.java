@@ -63,4 +63,8 @@ public class ShoppingCartService {
 
     return cartItemRepository.save(cartItem);
   }
+
+  public void remove(Integer itemId) {
+    cartItemRepository.deleteById(itemId);
+  }
 }
