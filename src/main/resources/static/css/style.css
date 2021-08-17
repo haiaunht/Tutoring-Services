@@ -1833,3 +1833,42 @@ input:focus {
     display: inline-block;
   }
 }
+
+.display-flex {
+  display: flex;
+  margin-left: 70px;
+}
+
+#leftbox {
+  float:left;
+  color:Red;
+  width:25%;
+  height:50px;
+  padding: 10px;
+}
+#middlebox{
+  float:left;
+  color:Green;
+  width:25%;
+  height:50px;
+  padding: 10px;
+}
+#rightbox{
+  float:right;
+  color:blue;
+  width:25%;
+  height:50px;
+  padding: 10px;
+}
+
+#total {
+  margin-top: 150px;
+  margin-right: 300px;
+}
+
+button {
+  padding: 10px 10px;
+  border-radius: 10px;
+  color: black;
+  background-color: beige;
+}

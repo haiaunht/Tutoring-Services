@@ -19,11 +19,11 @@ const CartItemCard = (props) => {
   return (
       <>
         {/*<Link to={link} className="card">*/}
-          <div className="card__course-content">
-            <h3 className="card__course-title">{user.fullName}</h3>
-            <div className="card__course-description">{course.name}</div>
-            <div className="card__course-instructor">{quantity}</div>
-            <div className="card__course-instructor">{course.price}</div>
+          <div className="display-flex">
+            {/*<h3 className="card__course-title col-sm-3">{user.fullName}</h3>*/}
+            <div id="leftbox">{course.name}</div>
+            <div id="middlebox">{quantity}</div>
+            <div id="rightbox">{course.price}</div>
             <button onClick={removeCourse}>Remove</button>
           </div>
 
