@@ -113,6 +113,7 @@ const Cart = (props) => {
       (<h2>Your cart is empty!</h2>) :
       (<div>
         <h1>Your cart:</h1>
+        <h4 id="cart">You have {cartDetails.length} items in your cart:</h4>
         {cartDetailsList}
         <div id="total">
           <h2 >Your total is: ${sum.toFixed(2)}</h2>

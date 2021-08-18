@@ -5,7 +5,7 @@ const LoggedIn = ({ setLoggedIn }) => {
   const handleSignOut = (e) => {
     e.preventDefault();
     setLoggedIn(false);
-    localStorage.removeItem("useId");
+    localStorage.removeItem("userId");
     localStorage.removeItem("info");
     localStorage.removeItem("username");
   };

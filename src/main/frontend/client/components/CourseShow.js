@@ -13,6 +13,8 @@ const CourseShow = (props) => {
   const [userWithId, setUserWithId] = useState(localStorage.getItem("userId"));
   const [user, setUser] = useState([])
   const [successful, setSuccessful] = useState(false)
+  let [currentCount, setCurrentCount] = useState(localStorage.getItem("cartCount"))
+  console.log(currentCount)
 
   const getUser = async () => {
     const data = await getData(`/api/v1/users/${userWithId}`)
@@ -88,11 +90,11 @@ const CourseShow = (props) => {
         const body = await response.json()
         if (body) {
           console.log("Successful add item to cart")
+          const increaseCount = Integer.parseInt(currentCount)+1
+          localStorage.setItem("cartCount", increaseCount)
         }
       }
-
-      setSuccessful(true)
-      window.location.reload(true)
+      console.log(localStorage.getItem("cartCount"))
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
@@ -104,11 +106,15 @@ const CourseShow = (props) => {
     item.course = courseDetail
     item.quantity = 1
     const itemObj = {...item, user: {id: Integer.parseInt(userWithId)}, course: {id:courseDetail.id}}
-    console.log(item)
-    // addCourseToCart(itemObj)
     addCourse()
+    currentCount = Integer.parseInt(currentCount)+1
+    localStorage.setItem("cartCount", currentCount)
+    setSuccessful(true)
   }
 
+  if (successful) {
+    window.location.reload(true)
+  }
 
   let display = showInstructor ? <InstructorsList /> : "";
   let notify = (successful) ? "Your course is added to cart!" : ""
