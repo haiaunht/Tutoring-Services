@@ -106,7 +106,7 @@ const NavBar = ({ loggedIn, setLoggedIn }) => {
                   activeClassName="active-link"
                   onClick={closeMenu}
               >
-                <i className="fas fa-shopping-cart"></i>
+                <i className="fas fa-shopping-cart"><span id="cartCount">{localStorage.getItem("cartCount")}</span></i>
               </NavLink>
             </li>
           </ul>

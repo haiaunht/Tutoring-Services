@@ -24,6 +24,7 @@ const Cart = (props) => {
   useEffect(() => {
     getCartItem()
   }, [])
+  localStorage.setItem("cartCount", cartDetails.length)
 
   const [itemToRemove, setItemToRemove] = useState({
     user: "",
@@ -42,7 +43,8 @@ const Cart = (props) => {
         body: JSON.stringify(itemToRemove)
       })
       setDoneDelete(true)
-
+      const currentCount = localStorage.getItem("cartCount") - 1
+      localStorage.setItem("cartCount", currentCount)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
@@ -120,13 +122,9 @@ const Cart = (props) => {
       </div>)
 
   return (
-      <>
-        <h1> --</h1>
-        <h1> --</h1>
-        <h1> --</h1>
-        <h1> --</h1>
+      <div className="section container">
         {display}
-      </>
+      </div>
   )
 }
 

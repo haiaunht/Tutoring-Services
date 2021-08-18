@@ -88,9 +88,11 @@ const CourseShow = (props) => {
         const body = await response.json()
         if (body) {
           console.log("Successful add item to cart")
-          setSuccessful(true)
         }
       }
+
+      setSuccessful(true)
+      window.location.reload(true)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
@@ -106,6 +108,7 @@ const CourseShow = (props) => {
     // addCourseToCart(itemObj)
     addCourse()
   }
+
 
   let display = showInstructor ? <InstructorsList /> : "";
   let notify = (successful) ? "Your course is added to cart!" : ""
