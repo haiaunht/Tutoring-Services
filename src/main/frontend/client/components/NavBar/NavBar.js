@@ -8,6 +8,7 @@ const NavBar = ({ loggedIn, setLoggedIn }) => {
   const [colorTheme, setColorTheme] = useState(
     localStorage.getItem("theme-color") || "light"
   );
+  const [cartCount, setCartCount] = useState(localStorage.getItem("cartCount"))
 
   const changeTheme = (theme) => {
     theme === "dark"
@@ -106,7 +107,7 @@ const NavBar = ({ loggedIn, setLoggedIn }) => {
                   activeClassName="active-link"
                   onClick={closeMenu}
               >
-                <i className="fas fa-shopping-cart"><span id="cartCount">{localStorage.getItem("cartCount")}</span></i>
+                <i className="fas fa-shopping-cart"><span id="cartCount">{cartCount}</span></i>
               </NavLink>
             </li>
           </ul>

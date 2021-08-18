@@ -1879,3 +1879,7 @@ button {
   padding: 0 5px;
   vertical-align: top;
 }
+
+#cart {
+  margin-bottom: 50px;
+}
